@@ -7,8 +7,25 @@
     <a class="p-2 text-dark" href="#">Support</a>
   </nav>
   <% if user_signed_in? %>
-    <a class="p-2 text-dark" href="#">Profile (<%= current_user.lastname %>)</a>
+    <a class="nav-item dropdown">
+      <a class="p-2 text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= current_user.lastname %>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Profile & Settings</a>
+        <div class="dropdown-divider"></div>
+        <% if current_user.faculty? %>
+          <%= link_to "Courses", courses_path, class: "dropdown-item" %>
+          <%= link_to "Manage AOCs", "#", class: "dropdown-item" %>
+        <% else %>
+          <%= link_to "Academic Progress", "#", class: "dropdown-item" %>
+        <% end %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Signout", signout_path, class: "dropdown-item" %>
+      </div>
+    </a>
   <% else %>
     <%= link_to "Signup", signup_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Signin", signin_path, class: "btn btn-outline" %>
   <% end %>
 </div>
