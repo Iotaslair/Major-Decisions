@@ -1,10 +1,10 @@
 class CoursePolicy < ApplicationPolicy
 
   def new?
-    return user.is_faculty?
+    create?
   end
 
   def create?
-    return user.is_faculty?
+    return user.faculty?
   end
 end
