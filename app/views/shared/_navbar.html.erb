@@ -6,5 +6,9 @@
     <a class="p-2 text-dark" href="#">AOCs</a>
     <a class="p-2 text-dark" href="#">Support</a>
   </nav>
-  <%= link_to "Signup", signup_path, class: "btn btn-outline-primary" %>
+  <% if user_signed_in? %>
+    <a class="p-2 text-dark" href="#">Profile (<%= current_user.lastname %>)</a>
+  <% else %>
+    <%= link_to "Signup", signup_path, class: "btn btn-outline-primary" %>
+  <% end %>
 </div>
