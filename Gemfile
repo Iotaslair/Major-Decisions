@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Bootstrap and styling
 gem 'bootstrap'
+gem 'jquery-rails'
 
 # Authentication and authorisation
 gem 'devise'
