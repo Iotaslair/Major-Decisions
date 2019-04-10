@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :courses
   devise_for :users
 
   # custom signin, signout, and signup routes for devise
