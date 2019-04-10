@@ -15,6 +15,8 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+
+    authorize @course
   end
 
   # GET /courses/1/edit
@@ -25,6 +27,8 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+
+    authorize @course
 
     respond_to do |format|
       if @course.save
