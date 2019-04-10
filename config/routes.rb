@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'user/show'
   resources :courses
   devise_for :users
 
