@@ -13,6 +13,12 @@ User.create(email: "faculty@ncf.edu", password: "password", faculty: true, first
 User.create(email: "shane@ncf.edu", password: "password", faculty: false, firstname: "Shane", lastname: "A")
 
 # Create some courses
+calculus_1 = Course.create(title: "Calculus 1")
+calculus_2 = Course.create(title: "Calculus 2")
+calculus_2.prereqs << calculus_1
+calculus_3 = Course.create(title: "Calculus 3")
+calculus_3.prereqs << calculus_2
+
 Course.create(title: "Philosophy of science")
 Course.create(title: "Philosophy of language")
 Course.create(title: "Advanced Ethics")
