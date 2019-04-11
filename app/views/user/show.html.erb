@@ -1,2 +1,11 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1>Your Profile</h1>
+
+<p>
+  <strong>Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %>
+</p>
+<p>
+  <strong>Your email:</strong> <%= current_user.email %>
+</p>
+<p>
+  <strong>Faculty?</strong> <%= current_user.faculty? %>
+</p>
