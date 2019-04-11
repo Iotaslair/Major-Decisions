@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :majors
   resources :requirements
   root to: 'home#index'
 
