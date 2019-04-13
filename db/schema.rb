@@ -10,34 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_150230) do
+ActiveRecord::Schema.define(version: 2019_04_13_135549) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prereqs_id"
-    t.integer "requirements_id"
-    t.index ["prereqs_id"], name: "index_courses_on_prereqs_id"
-    t.index ["requirements_id"], name: "index_courses_on_requirements_id"
+  end
+
+  create_table "courses_requirements", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_courses_requirements_on_course_id"
+    t.index ["requirement_id"], name: "index_courses_requirements_on_requirement_id"
   end
 
   create_table "majors", force: :cascade do |t|
     t.string "title"
-    t.integer "requirements_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["requirements_id"], name: "index_majors_on_requirements_id"
   end
 
   create_table "requirements", force: :cascade do |t|
-    t.string "title"
-    t.integer "courses_id"
+    t.string "name"
+    t.integer "major_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "major_id"
-    t.index ["courses_id"], name: "index_requirements_on_courses_id"
     t.index ["major_id"], name: "index_requirements_on_major_id"
   end
 
