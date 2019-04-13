@@ -1,8 +1,10 @@
 class Course < ApplicationRecord
 
-  has_many :prereqs, class_name: "Course", foreign_key: "prereqs_id"
-  belongs_to :parent, class_name: "Course", optional: true
+  # Join table for linking to many possible requirement areas
+  has_many :course_requirements
+  has_many :requirements, through: :course_requirements
 
+  # Validations
   validates :title, presence: true, uniqueness: true
 
 end
