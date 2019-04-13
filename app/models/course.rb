@@ -10,4 +10,25 @@ class Course < ApplicationRecord
   # Validations
   validates :title, presence: true, uniqueness: true
 
+  # Get immediate prereq if one exists
+  def immediate_prereq
+    return self.children.first if self.has_children?
+  end
+
+  # Get all prereqs if they exist
+  def all_prereqs
+    return self.descendants if self.has_children?
+  end
+
+  # Get all relevant majors
+  def all_majors
+    relevant_majors = Array[]
+
+    self.requirements.each do |requirement|
+      relevant_majors.push(requirement.major)
+    end
+
+    return relevant_majors
+  end
+
 end
