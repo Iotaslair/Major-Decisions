@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<h1>All Courses</h1>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Pre-requisites</th>
+      <th>Relevant AOCs</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= course.title %></td>
         <td><%= course.description %></td>
+        <td><%= get_immediate_prereq(course) %></td>
+        <td><%= get_all_relevant_degrees(course) %></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,31 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
+  helper_method :get_immediate_prereq, :get_all_prereqs, :get_all_relevant_degrees
+
+  # TODO: These should all be scoped methods in/on the model. Should not be handled by the controller
+  def get_immediate_prereq(course)
+    if course.has_children?
+      return course.children.first.title
+    end
+  end
+
+  def get_all_prereqs(course)
+    if course.has_children?
+      return course.children
+    end
+  end
+
+  def get_all_relevant_degrees(course)
+    relevant_degrees = Array[]
+
+    course.requirements.each do |requirement|
+      relevant_degrees.push(requirement.major.title)
+    end
+
+    return relevant_degrees
+  end
+
   # GET /courses
   # GET /courses.json
   def index

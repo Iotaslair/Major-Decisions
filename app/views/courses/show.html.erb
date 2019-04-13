@@ -12,9 +12,6 @@
 
 <p>
   <strong>Prereqs</strong>
-  <% @course.prereqs.each do |prereq| %>
-    <%= prereq.title %><br/>
-  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
