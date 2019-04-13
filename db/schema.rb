@@ -10,22 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_135549) do
+ActiveRecord::Schema.define(version: 2019_04_13_141636) do
+
+  create_table "course_requirements", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_requirements_on_course_id"
+    t.index ["requirement_id"], name: "index_course_requirements_on_requirement_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "courses_requirements", force: :cascade do |t|
-    t.integer "course_id"
-    t.integer "requirement_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_courses_requirements_on_course_id"
-    t.index ["requirement_id"], name: "index_courses_requirements_on_requirement_id"
+    t.integer "parent_id"
+    t.index ["parent_id"], name: "index_courses_on_parent_id"
   end
 
   create_table "majors", force: :cascade do |t|
