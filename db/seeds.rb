@@ -19,8 +19,9 @@ User.create(email: "student@ncf.edu", password: "password", faculty: false, firs
 # Computer Science
 cs = Major.create(title: "Computer Science")
 
-calculus_1 = Course.create(title: "Calculus 1")
+#calculus_3 = Course.create(title: "Calculus 3")
 calculus_2 = Course.create(title: "Calculus 2")
+calculus_1 = Course.create(title: "Calculus 1", parent: calculus_2)
 discrete_mathematics = Course.create(title: "Discrete Mathematics")
 
 sql = Course.create(title: "Intro to SQL")
@@ -29,6 +30,7 @@ database_design = Course.create(title: "Database Design")
 cs_maths_req = Requirement.new(name: "Mathematics", major: cs)
 cs_maths_req.courses << calculus_1
 cs_maths_req.courses << calculus_2
+#cs_maths_req.courses << calculus_3
 cs_maths_req.courses << discrete_mathematics
 cs_maths_req.save
 
@@ -43,10 +45,10 @@ economics_maths_req = Requirement.new(name: "Mathematics", major: economics)
 economics_maths_req.courses << calculus_1
 economics_maths_req.save
 
-intro_microeconomics = Course.create(title: "Introductory Microeconomics")
-intro_macroeconomics = Course.create(title: "Introductory Macroeconomics")
 intermediate_micro = Course.create(title: "Intermediate Microeconomics")
 intermediate_macro = Course.create(title: "Intermediate Macroeconomics")
+intro_microeconomics = Course.create(title: "Introductory Microeconomics", parent: intermediate_micro)
+intro_macroeconomics = Course.create(title: "Introductory Macroeconomics", parent: intermediate_macro)
 
 economics_intro_reqs = Requirement.new(name: "Introductory Courses", major: economics)
 economics_intro_reqs.courses << intro_microeconomics
