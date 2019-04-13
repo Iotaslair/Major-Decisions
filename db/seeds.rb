@@ -19,8 +19,8 @@ User.create(email: "student@ncf.edu", password: "password", faculty: false, firs
 # Computer Science
 cs = Major.create(title: "Computer Science")
 
-#calculus_3 = Course.create(title: "Calculus 3")
-calculus_2 = Course.create(title: "Calculus 2")
+calculus_3 = Course.create(title: "Calculus 3")
+calculus_2 = Course.create(title: "Calculus 2", parent: calculus_3)
 calculus_1 = Course.create(title: "Calculus 1", parent: calculus_2)
 discrete_mathematics = Course.create(title: "Discrete Mathematics")
 
@@ -30,7 +30,7 @@ database_design = Course.create(title: "Database Design")
 cs_maths_req = Requirement.new(name: "Mathematics", major: cs)
 cs_maths_req.courses << calculus_1
 cs_maths_req.courses << calculus_2
-#cs_maths_req.courses << calculus_3
+cs_maths_req.courses << calculus_3
 cs_maths_req.courses << discrete_mathematics
 cs_maths_req.save
 
@@ -63,7 +63,26 @@ economics_intermediate_reqs.save
 # Philosophy
 philosophy = Major.create(title: "Philosophy")
 
-analytic_req = Requirement.new(name: "Analytic", major: philosophy)
-analytic_req.courses << Course.create(title: "Formal Logic")
+analytic_req = Requirement.new(name: "Contemporary, analytic areas", major: philosophy)
 analytic_req.courses << Course.create(title: "Philosophy of language")
+analytic_req.courses << Course.create(title: "Philosophy of science")
+analytic_req.courses << Course.create(title: "Philosophy of mind")
 analytic_req.save
+
+logic_req = Requirement.new(name: "Deductive Logic", major: philosophy)
+logic_req.courses << Course.create(title: "Formal Logic")
+logic_req.save
+
+intro_ethics_req = Requirement.new(name: "Intro to Ethics", major: philosophy)
+intro_ethics_req.courses << Course.create(title: "Introduction to Ethics")
+intro_ethics_req.save
+
+value_req = Requirement.new(name: "Value Theory", major: philosophy)
+value_req.courses << Course.create(title: "Intro to Political Theory")
+value_req.courses << Course.create(title: "Advanced Ethics")
+value_req.courses << Course.create(title: "Virtues & Vices")
+value_req.save
+
+modern_req = Requirement.new(name: "Modern Philosophy", major: philosophy)
+modern_req.courses << Course.create(title: "Modern Philosophy")
+modern_req.save
