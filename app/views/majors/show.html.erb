@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+
+  <h1 style="color: #2070ba;"><%= @major.title %></h1>
+
+    <div class="row">
+      <div class="col-sm">
+        <button type="button" class="btn btn-primary btn-large">Add Required Course</button>
+        <button type="button" class="btn btn-outline-primary btn-large">Edit AOC</button>
+        <button type="button" class="btn btn-outline-secondary btn-large">Back</button>
+      </div>
+      </div>
+
+  <br/>
+<h2 style="color: #003554;">Requirement Areas</h2>
+<br/>
+<% @requirements.each do |requirement| %>
+  <h3 style="color: #00a6fb;"><%= requirement.name %></h3>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Course</th>
+      <th scope="col">Pre-requisite</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% requirement.courses.each do |course| %>
+      <tr>
+        <td class="col-md-2"> <%= link_to course.title, course_path(course), style: "text-decoration: none; color: black;" %></td>
+        <td class="col-md-2">
+          <% if course.has_children? %>
+            <%= course.children.first.title %>
+          <% else %>
+            None
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'Edit', edit_major_path(@major) %> |
+<%= link_to 'Back', majors_path %>
+
+</div>
