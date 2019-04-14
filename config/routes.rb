@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # Majors
   resources :majors
 
+  # Requirement areas
+  resources :requirements
+
   # Courses
   resources :courses
 
