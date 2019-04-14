@@ -31,4 +31,14 @@ class Course < ApplicationRecord
     return relevant_majors
   end
 
+  # Get a comma-separated string of all relevant majors
+  def all_majors_as_string
+
+    # Get all relevant majors, pluck only their titles
+    relevant_majors = self.all_majors.pluck(:title)
+
+    # Return as joined-by-commas string
+    return relevant_majors.join(", ")
+  end
+
 end
