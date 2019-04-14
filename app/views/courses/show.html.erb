@@ -11,7 +11,13 @@
 </p>
 
 <p>
-  <strong>Prereqs</strong>
+  <strong>Prereqs: </strong>
+  <%= @course.all_prereqs.pluck(:title).join(", ") if @course.has_children? %>
+</p>
+
+<p>
+  <strong>Relevant AOCs: </strong>
+  <%= @course.all_majors_as_string %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
