@@ -2,27 +2,23 @@
 
 <h1>All Courses</h1>
 
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-dark">
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Pre-requisites</th>
-      <th>Relevant AOCs</th>
-      <th colspan="3"></th>
+      <th class="col-md-1">Title</th>
+      <th class="col-md-1">Description</th>
+      <th class="col-md-1">Pre-requisites</th>
+      <th class="col-md-1">Relevant AOCs</th>
     </tr>
   </thead>
 
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.title %></td>
+        <td><%= link_to course.title, course_path(course) %></td>
         <td><%= course.description %></td>
-        <td><%= get_immediate_prereq(course) %></td>
-        <td><%= get_all_relevant_degrees(course) %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= course.immediate_prereq.title if course.immediate_prereq %></td>
+        <td><%= course.all_majors_as_string %></td>
       </tr>
     <% end %>
   </tbody>
