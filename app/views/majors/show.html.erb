@@ -1,22 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<div class="center">
+<div class="container center">
 
   <h1 style="color: #2070ba;"><%= @major.title %></h1>
 
     <div class="row">
       <div class="col-sm">
-        <button type="button" class="btn btn-primary btn-large">Add Required Course</button>
         <button type="button" class="btn btn-outline-primary btn-large">Edit AOC</button>
         <button type="button" class="btn btn-outline-secondary btn-large">Back</button>
       </div>
-      </div>
+    </div>
 
   <br/>
 <h2 style="color: #003554;">Requirement Areas</h2>
 <br/>
 <% @requirements.each do |requirement| %>
-  <h3 style="color: #00a6fb;"><%= requirement.name %></h3>
+    <div class="row justify-content-between">
+      <div class="col-8">
+        <h3 style="color: #00a6fb;"><%= requirement.name %></h3>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-primary btn-large">Add Required Course</button>
+      </div>
+    </div>
   <table class="table table-hover">
     <thead class="thead-dark">
     <tr>
