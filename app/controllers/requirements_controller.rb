@@ -56,7 +56,7 @@ class RequirementsController < ApplicationController
   def destroy
     @requirement.destroy
     respond_to do |format|
-      format.html { redirect_to requirements_url, notice: 'Requirement was successfully destroyed.' }
+      format.html { redirect_to requirements_url, notice: 'Requirement area was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class RequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def requirement_params
-      params.fetch(:requirement, {})
+      params.require(:requirement).permit(:name, :major_id)
     end
 end
