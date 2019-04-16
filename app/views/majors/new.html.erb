@@ -1,5 +1,13 @@
-<h1>New Academic Program</h1>
+<% content_for :hero_head do %>
+  <h1>New Academic Program</h1>
+<% end %>
 
-<%= render 'form', major: @major %>
+<% content_for :hero_lead do %>
+  <p class="lead">
+    Create a new academic program or Area of Concentration (AOC). After creating an AOC, you may create new requirement areas and corresponding courses.
+  </p>
+<% end %>
 
-<%= link_to 'Back', majors_path %>
+<% content_for :content do %>
+  <%= render 'form', major: @major %>
+<% end %>

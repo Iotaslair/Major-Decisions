@@ -1,63 +1,67 @@
-<p id="notice"><%= notice %></p>
+<% content_for :hero_head do %>
+  <h1><%= @major.title %></h1>
+<% end %>
 
-<div class="container center">
-
-  <h1 style="color: #2070ba;"><%= @major.title %></h1>
-
-  <% if @major.description %>
-    <p><%= @major.description %></p>
+<% if @major.description %>
+  <% content_for :hero_lead do %>
+    <p class="lead"><%= @major.description %></p>
   <% end %>
+<% end %>
 
-    <div class="row">
-      <div class="col-sm">
-        <%= link_to "Edit AOC", edit_major_path(@major), class: "btn btn-outline-primary btn-large" %>
-        <%= link_to "Add Requirement Area", new_requirement_path(major: @major.id), class: "btn btn-outline-primary btn-large" %>
-        <%= link_to "Back", majors_path, class: "btn btn-outline-secondary btn-large" %>
-      </div>
-    </div>
+<% content_for :hero_button_group do %>
+  <%= link_to "Edit AOC", edit_major_path(@major), class: "btn btn-outline-primary btn-large" %>
+  <%= link_to "Add Requirement Area", new_requirement_path(major: @major.id), class: "btn btn-outline-primary btn-large" %>
+  <%= link_to "Back", majors_path, class: "btn btn-outline-secondary btn-large" %>
+<% end %>
 
-  <br/>
-<h2 style="color: #003554;">Requirement Areas</h2>
-<br/>
-<% @requirements.each do |requirement| %>
+<% content_for :content do %>
+  <h2>Requirement Areas</h2>
+
+  <% @requirements.each do |requirement| %>
+
     <div class="row justify-content-between">
-      <div class="col-8">
-        <h3 style="color: #00a6fb;"><%= requirement.name %></h3>
+      <div class="col">
+        <h3><%= requirement.name %></h3>
         <% if requirement.description %>
-        <p><%= requirement.description %></p>
+          <p><%= requirement.description %></p>
         <% end %>
         <p><%= num_required_string(requirement) %></p>
       </div>
-      <div class="col-4">
-        <%= link_to "Add Course", new_course_path(requirement: requirement.id), class: "btn btn-primary btn-large" %>
-        <%= link_to "Edit Req", edit_requirement_path(requirement), class: "btn btn-outline-secondary btn-large" %>
+      <div>
+        <div class="btn-group" role="group">
+          <%= link_to "Add Course", new_course_path(requirement: requirement.id), class: "btn btn-primary btn-large" %>
+          <%= link_to "Edit Req", edit_requirement_path(requirement), class: "btn btn-outline-secondary btn-large" %>
+        </div>
       </div>
     </div>
-  <table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">Course</th>
-      <th scope="col">Pre-requisite</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% requirement.courses.each do |course| %>
-      <tr>
-        <td class="col-md-2"> <%= link_to course.title, course_path(course), style: "text-decoration: none; color: black;" %></td>
-        <td class="col-md-2">
-          <% if course.has_children? %>
-            <%= course.children.first.title %>
-          <% else %>
-            None
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">Course</th>
+            <th scope="col">Pre-requisite</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% requirement.courses.each do |course| %>
+            <tr>
+              <td class="col-md-2"> <%= link_to course.title, course_path(course), style: "text-decoration: none; color: black;" %></td>
+              <td class="col-md-2">
+                <% if course.has_children? %>
+                  <%= course.children.first.title %>
+                <% else %>
+                  None
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_major_path(@major) %> |
-<%= link_to 'Back', majors_path %>
 
-</div>

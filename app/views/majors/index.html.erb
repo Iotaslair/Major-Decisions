@@ -1,21 +1,37 @@
-<p id="notice"><%= notice %></p>
+<!-- Place the h1 title here -->
+<% content_for :hero_head do %>
+  <h1>Academic Programs</h1>
+<% end %>
 
-<h1>Academic Programs</h1>
+<!-- Place the lead content here, such as a description -->
+<% content_for :hero_lead do %>
+  <p class="lead">All of the academic programs (Areas of Concentration; AOCs).</p>
+<% end %>
 
-<table class="table table-hover">
-  <thead class="thead-dark">
+<!-- Place the corresponding actions here -->
+<% content_for :hero_button_group do %>
+  <%= link_to "Create AOC", new_major_path, class: "btn btn-outline-primary" %>
+<% end %>
+
+<!-- Place the main content here if using this hero system -->
+<% content_for :content do %>
+  <table class="table table-hover">
+    <thead class="thead-dark">
     <tr>
-      <th class="col-md-1">Title</th>
-      <th class="col-md-1"># Courses</th>
+      <th>Title</th>
+      <th># Requirement Areas</th>
+      <th># Courses</th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @majors.each do |major| %>
       <tr>
         <td><%= link_to major.title, major_path(major) %></td>
+        <td><%= major.requirements.count %> requirement <%= 'area'.pluralize %></td>
         <td><%= major.courses.count %> related <%= 'course'.pluralize %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+<% end %>
