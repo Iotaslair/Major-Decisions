@@ -12,6 +12,7 @@
   <tbody>
     <% @requirements.each do |requirement| %>
       <tr>
+        <td><%= requirement.name %> (<%= requirement.major.title %>)</td>
         <td><%= link_to 'Show', requirement %></td>
         <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
         <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
