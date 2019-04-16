@@ -12,8 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= collection_select :requirement, :major_id, Major.all, :id, :title %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
+
+  <%= form.hidden_field :major_id, value: params[:major_id] %>
 
   <div class="actions">
     <%= form.submit %>
