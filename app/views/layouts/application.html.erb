@@ -13,13 +13,64 @@
 
     <%= render "shared/navbar" %>
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+      <div class="container">
 
-    <%= yield %>
+        <% if notice %>
+          <div class="row">
+            <p class="alert alert-success"><%= notice %></p>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="row">
+            <p class="alert alert-danger"><%= alert %></p>
+          </div>
+        <% end %>
+
+        <% if content_for? :hero_head %>
+
+          <!-- hero -->
+          <div class="py-5">
+
+            <!-- hero header -->
+            <div class="row">
+              <div class="col">
+                <%= yield :hero_head %>
+              </div>
+            </div>
+
+            <!-- hero lead paragraph -->
+            <div class="row">
+              <div class="col">
+                <p class="lead">
+                  <%= yield :hero_lead %>
+                </p>
+              </div>
+            </div>
+
+            <!-- hero button group -->
+            <% if content_for? :hero_button_group %>
+            <div class="row">
+              <div class="col">
+                <div class="btn-group" role="group">
+                  <%= yield :hero_button_group %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+
+          <!-- content -->
+          <div class="row">
+            <div class="col">
+              <%= yield :content %>
+            </div>
+          </div>
+
+        <% else %>
+
+          <%= yield %>
+
+        <% end %>
+      </div>
   </body>
 </html>
