@@ -5,7 +5,25 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # Make the num_required English formatter available in views
+  helper_method :num_required_string
+
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def num_required_string(requirement)
+    total_num = requirement.courses.count
+    num_required = requirement.num_required
+
+    if (num_required == 1) && (num_required == total_num)
+      return "You must complete the following course."
+
+    elsif num_required < total_num
+      return "You must complete AT LEAST #{num_required} of the following courses."
+
+    elsif num_required == total_num
+      return "You must complete ALL of the following courses."
+    end
+  end
 
   protected
     def configure_permitted_parameters
