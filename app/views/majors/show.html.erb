@@ -4,6 +4,10 @@
 
   <h1 style="color: #2070ba;"><%= @major.title %></h1>
 
+  <% if @major.description %>
+    <p><%= @major.description %></p>
+  <% end %>
+
     <div class="row">
       <div class="col-sm">
         <%= link_to "Edit AOC", edit_major_path(@major), class: "btn btn-outline-primary btn-large" %>
@@ -19,6 +23,10 @@
     <div class="row justify-content-between">
       <div class="col-8">
         <h3 style="color: #00a6fb;"><%= requirement.name %></h3>
+        <% if requirement.description %>
+        <p><%= requirement.description %></p>
+        <% end %>
+        <p><%= num_required_string(requirement) %></p>
       </div>
       <div class="col-4">
         <%= link_to "Add Course", new_course_path(requirement: requirement.id), class: "btn btn-primary btn-large" %>
