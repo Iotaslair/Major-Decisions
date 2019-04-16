@@ -24,7 +24,10 @@ class RequirementsController < ApplicationController
   # POST /requirements
   # POST /requirements.json
   def create
-    @requirement = Requirement.new(requirement_params)
+    puts "requirement_params: #{requirement_params}"
+    @requirement = Requirement.new
+    @requirement.name = requirement_params[:name]
+    @requirement.major_id = requirement_params[:major_id]
 
     respond_to do |format|
       if @requirement.save
@@ -69,6 +72,8 @@ class RequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def requirement_params
+
+      # Permit params for name and specified major_id
       params.require(:requirement).permit(:name, :major_id)
     end
 end
