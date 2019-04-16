@@ -33,12 +33,19 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = Course.new
+    @course.title = course_params[:title]
+    @course.description = course_params[:description]
+
+    if course_params[:requirement] != nil
+      @course.requirements << Requirement.find(course_params[:requirement])
+    end
 
     authorize @course
 
     respond_to do |format|
       if @course.save
+
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
@@ -82,6 +89,7 @@ class CoursesController < ApplicationController
     # TODO: Custom params whether creating or editing
     # E.g.
     def course_params
-      params.require(:course).permit(:title, :description, :requirements)
+      # Permit params title, description, requirements, requirement (for specified requirement area id)
+      params.require(:course).permit(:title, :description, :requirements, :requirement)
     end
 end
