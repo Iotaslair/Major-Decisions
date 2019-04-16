@@ -78,6 +78,6 @@ class RequirementsController < ApplicationController
 
       # Permit params for name and specified major_id
       #params.permit(:requirement, :name, :major)
-      params.require(:requirement).permit(:name, :major)
+      params.require(:requirement).permit(:name, :major, :description, :num_required)
     end
 end
