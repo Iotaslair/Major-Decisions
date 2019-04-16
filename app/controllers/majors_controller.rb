@@ -58,7 +58,7 @@ class MajorsController < ApplicationController
   def destroy
     @major.destroy
     respond_to do |format|
-      format.html { redirect_to majors_url, notice: 'Major was successfully destroyed.' }
+      format.html { redirect_to majors_url, notice: 'AOC was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class MajorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def major_params
-      params.fetch(:major, {})
+      params.require(:major).permit(:title)
     end
 end
