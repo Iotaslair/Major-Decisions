@@ -16,6 +16,16 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_required %>
+    <%= form.number_field :num_required %>
+  </div>
+
   <%= form.hidden_field :major, value: params[:major] %>
 
   <div class="actions">
