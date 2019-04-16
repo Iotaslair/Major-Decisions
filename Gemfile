@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Handles parent-child relationships. Currently using to handle pre-requisites for courses
 gem 'ancestry'
 
 # Reduces boot times through caching; required in config/boot.rb
