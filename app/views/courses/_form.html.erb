@@ -21,6 +21,10 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= collection_select :course, :requirements, Requirement.all, :id, :name, {}, {multiple: true} %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
