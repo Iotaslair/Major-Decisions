@@ -27,7 +27,10 @@ class RequirementsController < ApplicationController
     puts "requirement_params: #{requirement_params}"
     @requirement = Requirement.new
     @requirement.name = requirement_params[:name]
-    @requirement.major_id = requirement_params[:major_id]
+
+    if requirement_params[:major] != nil
+      @requirement.major = Major.find(requirement_params[:major])
+    end
 
     respond_to do |format|
       if @requirement.save
@@ -74,6 +77,7 @@ class RequirementsController < ApplicationController
     def requirement_params
 
       # Permit params for name and specified major_id
-      params.require(:requirement).permit(:name, :major_id)
+      #params.permit(:requirement, :name, :major)
+      params.require(:requirement).permit(:name, :major)
     end
 end
