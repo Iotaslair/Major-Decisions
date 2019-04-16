@@ -14,6 +14,13 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+
+    # TODO: Need to switch from gem 'ancestry' to 'acts_as_tree'
+    # There is an issue in which you can't declare children (in ancestry) when the
+    # model has not yet been saved. With acts_as_tree, this shouldn't be a problem.
+    # The workaround is to only allow a prereq (children) to be declared when editing
+    # an already existing course (model).
+
     @course = Course.new
 
     authorize @course
@@ -60,7 +67,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'Course was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -72,7 +79,9 @@ class CoursesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # TODO: Custom params whether creating or editing
+    # E.g.
     def course_params
-      params.require(:course).permit(:title, :description)
+      params.require(:course).permit(:title, :description, :requirements)
     end
 end
