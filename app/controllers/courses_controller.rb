@@ -37,13 +37,35 @@ class CoursesController < ApplicationController
     @course.title = course_params[:title]
     @course.description = course_params[:description]
 
+    requirement_area = Requirement.find(course_params[:requirement])
     if course_params[:requirement] != nil
-      @course.requirements << Requirement.find(course_params[:requirement])
+      @course.requirements << requirement_area
     end
 
     authorize @course
 
     respond_to do |format|
+      # First, see if course already exists when adding to requirement area
+      does_course_exist = Course.where(title: course_params[:title]).first
+      if course_params[:requirement] != nil && does_course_exist != nil
+        # Course already exists!
+
+        # Check to see if course is already in requirement area
+        if requirement_area.courses.where(title: does_course_exist.title).empty?
+
+          # Course doesn't exist in requirement area, let's add it!
+          requirement_area.courses << does_course_exist
+
+          format.html { redirect_to @course, notice: 'Course already exists, but we added it to the requirement area.' }
+
+        else
+
+          # Course already exists in requirement area
+
+          format.html { redirect_to @course, notice: 'Course already exists AND is already in requirement area.' }
+        end
+      end
+
       if @course.save
 
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
