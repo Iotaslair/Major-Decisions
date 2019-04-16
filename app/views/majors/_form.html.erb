@@ -11,17 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.submit "Create AOC", class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= link_to 'Back', majors_path, class: "btn btn-outline-secondary" %>
+    </div>
   </div>
 <% end %>
