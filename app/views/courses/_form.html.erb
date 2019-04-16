@@ -21,9 +21,7 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
-    <%= collection_select :course, :requirements, Requirement.all, :id, :name, {}, {multiple: true} %>
-  </div>
+  <%= form.hidden_field :requirement, value: params[:requirement] %>
 
   <div class="actions">
     <%= form.submit %>
