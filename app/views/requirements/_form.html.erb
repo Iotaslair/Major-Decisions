@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= collection_select :requirement, :major_id, Major.all, :id, :title %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
