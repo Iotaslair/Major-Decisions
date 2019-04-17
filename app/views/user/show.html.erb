@@ -1,5 +1,5 @@
 <% content_for :hero_head do %>
-  <h1>Your Profile</h1>
+  <h1><%= icon 'fas', 'user' %> Your Profile</h1>
 <% end %>
 
 <% content_for :hero_lead do %>
@@ -11,14 +11,14 @@
   <div class="row">
     <div class="col">
       <p>
-        <strong>Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %> (<%= current_user.email %>)
+        <strong><%= icon 'fas', 'at' %> Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %> (<%= current_user.email %>)
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <p>
-        <strong>Faculty?</strong> <%= current_user.faculty? %>
+        <strong><%= icon('fas', 'user-shield') %> Faculty?</strong> <%= current_user.faculty? %>
       </p>
     </div>
   </div>
