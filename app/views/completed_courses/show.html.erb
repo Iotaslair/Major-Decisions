@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @completed_course.user %>
+  <%= @completed_course.user.email %>
 </p>
 
 <p>
   <strong>Course:</strong>
-  <%= @completed_course.course %>
+  <%= @completed_course.course.title %>
 </p>
 
 <%= link_to 'Edit', edit_completed_course_path(@completed_course) %> |
