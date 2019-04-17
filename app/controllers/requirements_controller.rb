@@ -19,10 +19,13 @@ class RequirementsController < ApplicationController
   # GET /requirements/new
   def new
     @requirement = Requirement.new
+
+    authorize @requirement
   end
 
   # GET /requirements/1/edit
   def edit
+    authorize @requirement
   end
 
   # POST /requirements
@@ -38,6 +41,8 @@ class RequirementsController < ApplicationController
       @requirement.major = Major.find(requirement_params[:major])
     end
 
+    authorize @requirement
+
     respond_to do |format|
       if @requirement.save
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
@@ -52,6 +57,8 @@ class RequirementsController < ApplicationController
   # PATCH/PUT /requirements/1
   # PATCH/PUT /requirements/1.json
   def update
+    authorize @requirement
+
     respond_to do |format|
       if @requirement.update(
                          name: requirement_params[:name],
@@ -70,6 +77,8 @@ class RequirementsController < ApplicationController
   # DELETE /requirements/1
   # DELETE /requirements/1.json
   def destroy
+    authorize @requirement
+
     @requirement.destroy
     respond_to do |format|
       format.html { redirect_to requirements_url, notice: 'Requirement area was successfully deleted.' }

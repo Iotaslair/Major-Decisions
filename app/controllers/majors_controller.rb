@@ -21,16 +21,21 @@ class MajorsController < ApplicationController
   # GET /majors/new
   def new
     @major = Major.new
+
+    authorize @major
   end
 
   # GET /majors/1/edit
   def edit
+    authorize @major
   end
 
   # POST /majors
   # POST /majors.json
   def create
     @major = Major.new(major_params)
+
+    authorize @major
 
     respond_to do |format|
       if @major.save
@@ -46,6 +51,8 @@ class MajorsController < ApplicationController
   # PATCH/PUT /majors/1
   # PATCH/PUT /majors/1.json
   def update
+    authorize @major
+
     respond_to do |format|
       if @major.update(major_params)
         format.html { redirect_to @major, notice: 'Major was successfully updated.' }
@@ -60,6 +67,8 @@ class MajorsController < ApplicationController
   # DELETE /majors/1
   # DELETE /majors/1.json
   def destroy
+    authorize @major
+
     @major.destroy
     respond_to do |format|
       format.html { redirect_to majors_url, notice: 'AOC was successfully deleted.' }
