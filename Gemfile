@@ -44,6 +44,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'jquery-rails'
 
+# FontAwesome
+#gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.8.1'
+
 # Authentication and authorisation
 gem 'devise'
 gem 'pundit'
