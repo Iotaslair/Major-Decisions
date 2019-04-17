@@ -27,6 +27,8 @@ class RequirementsController < ApplicationController
     puts "requirement_params: #{requirement_params}"
     @requirement = Requirement.new
     @requirement.name = requirement_params[:name]
+    @requirement.description = requirement_params[:description]
+    @requirement.num_required = requirement_params[:num_required]
 
     if requirement_params[:major] != nil
       @requirement.major = Major.find(requirement_params[:major])
@@ -47,7 +49,11 @@ class RequirementsController < ApplicationController
   # PATCH/PUT /requirements/1.json
   def update
     respond_to do |format|
-      if @requirement.update(requirement_params)
+      if @requirement.update(
+                         name: requirement_params[:name],
+                         description: requirement_params[:description],
+                         num_required: requirement_params[:num_required]
+      )
         format.html { redirect_to @requirement, notice: 'Requirement was successfully updated.' }
         format.json { render :show, status: :ok, location: @requirement }
       else
@@ -78,6 +84,7 @@ class RequirementsController < ApplicationController
 
       # Permit params for name and specified major_id
       #params.permit(:requirement, :name, :major)
+      # Always require a major to add the requirement area to
       params.require(:requirement).permit(:name, :major, :description, :num_required)
     end
 end
