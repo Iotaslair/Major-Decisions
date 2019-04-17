@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # Require presence of first and last name
-  validates :firstname, presence: true
-  validates :lastname, presence: true
+  validates :email, presence: true, uniqueness: true  # Require a unique email
+  validates :firstname, presence: true                # Require a first name
+  validates :lastname, presence: true                 # Require a last name
 end
