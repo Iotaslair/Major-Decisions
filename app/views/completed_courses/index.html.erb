@@ -14,8 +14,8 @@
   <tbody>
     <% @completed_courses.each do |completed_course| %>
       <tr>
-        <td><%= completed_course.user %></td>
-        <td><%= completed_course.course %></td>
+        <td><%= completed_course.user.email %></td>
+        <td><%= completed_course.course.title %></td>
         <td><%= link_to 'Show', completed_course %></td>
         <td><%= link_to 'Edit', edit_completed_course_path(completed_course) %></td>
         <td><%= link_to 'Destroy', completed_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Completed Course', new_completed_course_path %>
+<%= link_to 'New Completed Course', new_completed_course_path(user: current_user) %>
