@@ -1,4 +1,8 @@
 class RequirementsController < ApplicationController
+
+  # Require user to be logged in
+  before_action :authenticate_user!
+
   before_action :set_requirement, only: [:show, :edit, :update, :destroy]
 
   # GET /requirements
@@ -30,7 +34,7 @@ class RequirementsController < ApplicationController
     @requirement.description = requirement_params[:description]
     @requirement.num_required = requirement_params[:num_required]
 
-    if requirement_params[:major] != nil
+    if !requirement_params[:major].empty?
       @requirement.major = Major.find(requirement_params[:major])
     end
 
@@ -39,7 +43,7 @@ class RequirementsController < ApplicationController
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @requirement }
       else
-        format.html { render :new }
+        format.html { render :new, locals: { major: params[:major] } }
         format.json { render json: @requirement.errors, status: :unprocessable_entity }
       end
     end
