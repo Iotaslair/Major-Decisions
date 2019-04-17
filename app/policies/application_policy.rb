@@ -1,5 +1,7 @@
 class ApplicationPolicy
+
   attr_reader :user, :record
+  attr_accessor :error_message # Make @error_message accessible in all policy subclasses
 
   def initialize(user, record)
     @user = user
