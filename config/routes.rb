@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :completed_courses
   root to: 'home#index'
 
   # User

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @completed_course.user %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @completed_course.course %>
+</p>
+
+<%= link_to 'Edit', edit_completed_course_path(@completed_course) %> |
+<%= link_to 'Back', completed_courses_path %>
