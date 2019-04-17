@@ -11,19 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row mb-3">
+    <dib class="col">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </dib>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="row mb-3">
+    <dib class="col">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </dib>
   </div>
 
   <%= form.hidden_field :requirement, value: params[:requirement] %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row mb-3">
+    <dib class="col">
+      <%= form.submit "Confirm", class: "btn btn-primary" %>
+    </dib>
   </div>
 <% end %>

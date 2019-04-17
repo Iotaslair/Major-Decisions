@@ -11,24 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :num_required %>
-    <%= form.number_field :num_required %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :num_required %>
+      <%= form.number_field :num_required, min: 1, class: "form-control" %>
+    </div>
   </div>
 
   <%= form.hidden_field :major, value: params[:major] %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.submit "Confirm", class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
