@@ -3,4 +3,10 @@
 <%= render 'form', requirement: @requirement %>
 
 <%= link_to 'Show', @requirement %> |
-<%= link_to 'Back', requirements_path %>
+
+<% if params[:major] %>
+  <%= link_to 'Back to AOC', major_path(params[:major]) %>
+<% else %>
+  <%= link_to 'Back', majors_path %>
+<% end %>
+
