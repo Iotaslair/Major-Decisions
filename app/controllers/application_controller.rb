@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
+  def user_not_authorized(exception)
+    flash[:alert] = exception.policy.try(:error_message) || "You are not authorised to perform this action."
     redirect_to(request.referrer || root_path)
   end
 
