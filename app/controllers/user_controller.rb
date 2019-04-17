@@ -1,5 +1,8 @@
 class UserController < ApplicationController
 
+  # Require a logged-in user
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
 

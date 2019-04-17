@@ -1,4 +1,8 @@
 class CompletedCoursesController < ApplicationController
+
+  # Require user to be logged in
+  before_action :authenticate_user!
+
   before_action :set_completed_course, only: [:show, :edit, :update, :destroy]
 
   # GET /completed_courses
@@ -25,6 +29,8 @@ class CompletedCoursesController < ApplicationController
   # POST /completed_courses.json
   def create
     @completed_course = CompletedCourse.new(completed_course_params)
+
+    # TODO: Don't allow user to specify a course as completed if the user has ALREADY completed it
 
     respond_to do |format|
       if @completed_course.save
