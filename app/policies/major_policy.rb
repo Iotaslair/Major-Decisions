@@ -20,6 +20,8 @@ class MajorPolicy < ApplicationPolicy
     if user.faculty? == false
       @error_message = "You must be a faculty member to modify academic programs."
       return false
+    else
+      return true
     end
   end
 

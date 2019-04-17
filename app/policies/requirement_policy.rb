@@ -20,6 +20,8 @@ class RequirementPolicy < ApplicationPolicy
     if user.faculty? == false
       @error_message = "You must be a faculty member to modify requirements."
       return false
+    else
+      return true
     end
   end
 
