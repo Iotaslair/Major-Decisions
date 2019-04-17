@@ -10,7 +10,9 @@
 
 <!-- Place the corresponding actions here -->
 <% content_for :hero_button_group do %>
+  <% if current_user.faculty? %>
   <%= link_to "Create AOC", new_major_path, class: "btn btn-outline-primary" %>
+  <% end %>
 <% end %>
 
 <!-- Place the main content here if using this hero system -->
