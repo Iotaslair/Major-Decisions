@@ -9,3 +9,15 @@ jane_smith:
   email: "jane.smith19@ncf.edu"
   firstname: "Jane"
   lastname: "Smith"
+
+faculty:
+  email: "faculty@ncf.edu"
+  faculty: true
+  firstname: "John"
+  lastname: "Doucette"
+
+student:
+  email: "student@ncf.edu"
+  faculty: false
+  firstname: "Jane"
+  lastname: "Doe"
