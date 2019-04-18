@@ -15,14 +15,25 @@
 
 <main role="main" class="container pb-3">
 
+  <!-- Not production ready -->
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      <p class="alert alert-danger"><%= icon "fas", "bomb" %> This software is not intended or ready for actual use. You may encounter errors and your data may be lost. By using this software, you agree that no warranty or rights are provided to the user (you).</p>
+    </div>
+  </div>
+
   <% if notice %>
-    <div class="row">
-      <p class="alert alert-success"><%= notice %></p>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <p class="alert alert-success"><%= notice %></p>
+      </div>
     </div>
   <% end %>
   <% if alert %>
-    <div class="row">
-      <p class="alert alert-danger"><%= icon 'fas', 'exclamation-triangle' %> <%= alert %></p>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto">
+        <p class="alert alert-danger"><%= icon 'fas', 'exclamation-triangle' %> <%= alert %></p>
+      </div>
     </div>
   <% end %>
 
