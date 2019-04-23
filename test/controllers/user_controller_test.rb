@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class UserControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
 
   setup do
     @student = users(:student)
