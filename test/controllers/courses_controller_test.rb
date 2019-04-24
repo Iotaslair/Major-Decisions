@@ -2,14 +2,23 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  
+
   setup do
     @course = courses(:one)
     @student = users(:student)
     @faculty = users(:faculty)
   end
 
+  test "should get index as student" do
+    sign_in @student
+
+    get courses_url
+    assert_response :redirect
+  end
+
   test "should get index as faculty" do
+    sign_in @faculty
+
     get courses_url
     assert_response :success
   end
