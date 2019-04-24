@@ -61,6 +61,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
 
+
   test "should not show course when not logged in" do
     get course_url(@course)
     assert_response :redirect
@@ -101,6 +102,8 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+
+
   test "should not update course when not logged in" do
     patch course_url(@course), params: { course: { description: @course.description, title: @course.title } }
     assert_response :redirect
@@ -121,7 +124,30 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to course_url(@course)
   end
 
-  test "should destroy course" do
+
+
+  test "should not destroy course when not logged in" do
+    assert_difference('Course.count', 0) do
+      delete course_url(@course)
+    end
+
+    assert_response :redirect
+  end
+
+  test "should not destroy course when logged in as student" do
+    sign_in @student
+
+    assert_difference('Course.count', 0) do
+      delete course_url(@course)
+    end
+
+    assert_response :redirect
+  end
+
+  #TODO Make it delete course
+  test "should destroy course when logged in as faculty" do
+    sign_in @faculty
+
     assert_difference('Course.count', -1) do
       delete course_url(@course)
     end
