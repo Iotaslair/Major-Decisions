@@ -13,7 +13,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     sign_in @student
 
     get courses_url
-    assert_response :redirect
+    assert_response :success
   end
 
   test "should get index as faculty" do
