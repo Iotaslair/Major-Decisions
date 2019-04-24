@@ -1,11 +1,15 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @course = courses(:one)
+    @student = users(:student)
+    @faculty = users(:faculty)
   end
 
-  test "should get index" do
+  test "should get index as faculty" do
     get courses_url
     assert_response :success
   end
