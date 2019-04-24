@@ -8,11 +8,17 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     @faculty = users(:faculty)
   end
 
-  test "should get show" do
+  test "should get show for student" do
     sign_in @student
 
     get user_url(@student)
     assert_response :success
   end
 
+  test "should get show for faculty" do
+    sign_in @faculty
+
+    get user_url(@faculty)
+    assert_response :success
+  end
 end
