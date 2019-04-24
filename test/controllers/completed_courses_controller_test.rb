@@ -1,11 +1,16 @@
 require 'test_helper'
 
 class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @completed_course = completed_courses(:one)
+    @student = users(:student)
   end
 
-  test "should get index" do
+  test "should get index if logged in" do
+    sign_in @student
+
     get completed_courses_url
     assert_response :success
   end
@@ -28,7 +33,9 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should get edit if signed in" do
+    #sign_in @student
+
     get edit_completed_course_url(@completed_course)
     assert_response :success
   end
