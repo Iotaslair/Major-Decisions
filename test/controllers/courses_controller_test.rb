@@ -113,6 +113,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  #TODO for some reason when going through the website to edit the course it fails and gives a rails error
   test "should not update course when logged in as faculty" do
     sign_in @faculty
 
