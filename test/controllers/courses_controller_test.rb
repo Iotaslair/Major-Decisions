@@ -41,7 +41,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   test "should not create course as student" do
     sign_in @student
 
-    assert_difference('Course.count') do
+    assert_no_difference('Course.count') do
       post courses_url, params: { course: { title: @course.title, description: @course.description } }
     end
 
@@ -54,7 +54,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     sign_in @faculty
 
     assert_difference('Course.count') do
-      post courses_url, params: { course: { title: @course.title, description: @course.description, requirements: 1, requirement: 1  } }
+      post courses_url, params: { course: { title: @course.title, description: @course.description } }
     end
 
     assert_redirected_to course_url(Course.last)
@@ -117,11 +117,11 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   #TODO for some reason when going through the website to edit the course it fails and gives a rails error
-  test "should not update course when logged in as faculty" do
+  test "should update course when logged in as faculty" do
     sign_in @faculty
 
     patch course_url(@course), params: { course: { description: @course.description, title: @course.title } }
-    assert_redirected_to course_url(@course)
+    assert_redirected_to @course
   end
 
 

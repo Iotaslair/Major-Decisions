@@ -87,7 +87,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     respond_to do |format|
-      if @course.update(course_params)
+      if @course.update(title: course_params[:title], description: course_params[:description])
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
