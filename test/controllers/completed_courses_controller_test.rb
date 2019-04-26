@@ -8,8 +8,20 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     @student = users(:student)
   end
 
-  test "should get index if logged in" do
+  test "should not get index if not logged in" do
+    get completed_courses_url
+    assert_response :redirect
+  end
+
+  test "should get index if logged in as student" do
     sign_in @student
+
+    get completed_courses_url
+    assert_response :success
+  end
+  #TODO fix me
+  test "should get index if logged in as faculty" do
+    sign_in @faculty
 
     get completed_courses_url
     assert_response :success
