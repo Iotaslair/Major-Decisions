@@ -16,9 +16,7 @@
       <tr>
         <td><%= completed_course.user.email %></td>
         <td><%= completed_course.course.title %></td>
-        <td><%= link_to 'Show', completed_course %></td>
-        <td><%= link_to 'Edit', edit_completed_course_path(completed_course) %></td>
-        <td><%= link_to 'Destroy', completed_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', completed_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

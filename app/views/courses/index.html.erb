@@ -4,8 +4,9 @@
 
 <% content_for :hero_lead do %>
   <p class="lead">
-    All courses for all academic programs. To add a course, visit an academic program and add a course to a requirement area.<br/>
+    All courses for all academic programs. <%if current_user.faculty?  %> To add a course, visit an academic program and add a course to a requirement area.<br/>
     You can view the full list of pre-requisite courses by viewing (clicking) the individual course.
+      <%end %>
   </p>
 <% end %>
 

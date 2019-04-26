@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     elsif num_required < total_num
       return "You must complete AT LEAST #{num_required} of the following courses."
 
-    elsif num_required == total_num
+    else num_required == total_num
       return "You must complete ALL of the following courses."
     end
   end
