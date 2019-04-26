@@ -118,7 +118,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     sign_in @faculty
 
     patch course_url(@course), params: {course: {description: @course.description, title: @course.title}}
-    assert_redirected_to @course
+    assert_response :success
   end
 
 
