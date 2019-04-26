@@ -9,6 +9,11 @@ class MajorsControllerTest < ActionDispatch::IntegrationTest
     @faculty = users(:faculty)
   end
 
+  test "should not get index if not logged in" do
+    get majors_url
+    assert_response :redirect
+  end
+
   test "should get index if logged in" do
     sign_in @student
 

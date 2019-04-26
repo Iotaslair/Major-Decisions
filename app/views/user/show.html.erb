@@ -11,7 +11,8 @@
   <div class="row">
     <div class="col">
       <p>
-        <strong><%= icon 'fas', 'at' %> Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %> (<%= current_user.email %>)
+        <strong><%= icon 'fas', 'at' %> Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %>
+        (<%= current_user.email %>)
       </p>
     </div>
   </div>
@@ -22,10 +23,13 @@
       </p>
     </div>
   </div>
-  <!-- Academic -->
-  <div class="row justify-content-md-center">
-    <!-- AOC -->
-    <div class="col col-lg-4">
+  <!-- If you're a student then see completed courses card, if not then just major-->
+  <!-- Doing the if statment here so that I can center the major -->
+  <% if current_user.faculty? == false %>
+    <!-- Academic -->
+    <div class="row justify-content-md-center">
+      <!-- AOC -->
+      <div class="col col-lg-4">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">TODO: Major</h5>
@@ -33,24 +37,40 @@
             <p class="card-text">major.description</p>
             <a href="#" class="card-link">View Details</a>
           </div>
+        </div>
       </div>
-    </div>
-    <!-- # completed courses -->
-    <div class="col col-lg-4">
+      <!-- # completed courses -->
+      <div class="col col-lg-4">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">Completed Courses</h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= current_user.completed_courses.count %> completed <%= 'course'.pluralize %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%= current_user.completed_courses.count %>
+              completed <%= 'course'.pluralize %></h6>
             <p class="card-text">
-              <ul>
-                <% current_user.completed_courses.each do |completed_course| %>
-                  <li><%= completed_course.course.title %></li>
-                <% end %>
-              </ul>
+            <ul>
+              <% current_user.completed_courses.each do |completed_course| %>
+                <li><%= completed_course.course.title %></li>
+              <% end %>
+            </ul>
             </p>
             <%= link_to "Update Progress", completed_courses_path(user: current_user), class: "card-link" %>
           </div>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="row justify-content-md-center">
+      <!-- AOC -->
+      <div class="col col-lg-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">TODO: Major</h5>
+            <h6 class="card-subtitle mb-2 text-muted">major.division</h6>
+            <p class="card-text">major.description</p>
+            <a href="#" class="card-link">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
