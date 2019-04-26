@@ -34,7 +34,7 @@ Rails version: `5.2.3`
 
 [ ] Allow students to choose their AOC
 
-[ ] Put link for AOC not in dropdown menu but in Navbar  -- William in progress
+[x] Put link for AOC not in dropdown menu but in Navbar 
 
 [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
 
