@@ -9,6 +9,11 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     @faculty = users(:faculty)
   end
 
+  test "should not get index when not logged in" do
+    get courses_url
+    assert_response :redirect
+  end
+
   test "should get index as student" do
     sign_in @student
 
@@ -21,6 +26,11 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
     get courses_url
     assert_response :success
+  end
+
+  test "should not get new when not logged in" do
+    get new_course_url
+    assert_response :redirect
   end
 
   test "should not get new as student" do
