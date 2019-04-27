@@ -11,14 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= form.hidden_field :user_id %>
 
-  <div class="field">
-    <%= form.label :major_id %>
-    <%= form.text_field :major_id %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.label :major_id %>
+      <%= form.collection_select :major_id, Major.order(:title), :id, :title, class: "form-control" %>
+    </div>
   </div>
 
   <div class="actions">
