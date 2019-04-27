@@ -28,13 +28,47 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
+  test "should not get new when not logged in" do
+    get new_completed_course_url
+    assert_response :redirect
+  end
+
+  test "should get new when logged in as student" do
+    sign_in @student
+
     get new_completed_course_url
     assert_response :success
   end
+  #TODO make it so faculty can't add completed courses
+  test "should not get new when logged in as faculty" do
+    sign_in @faculty
 
-  test "should create completed_course" do
+    get new_completed_course_url
+    assert_response :redirect
+  end
+
+  test "should not create completed_course when not logged in" do
+    assert_no_difference('CompletedCourse.count') do
+      post completed_courses_url, params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
+    end
+
+    assert_response :redirect
+  end
+
+  test "should create completed_course when logged in as student" do
+    sign_in @student
+
     assert_difference('CompletedCourse.count') do
+      post completed_courses_url, params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
+    end
+
+    assert_redirected_to completed_course_url(CompletedCourse.last)
+  end
+  #TODO make it so faculty can't create completed courses
+  test "should not create completed_course as faculty" do
+    sign_in @faculty
+
+    assert_no_difference('CompletedCourse.count') do
       post completed_courses_url, params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
     end
 
