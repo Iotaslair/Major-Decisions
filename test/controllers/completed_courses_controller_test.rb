@@ -113,7 +113,7 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should not update completed_course when logged in" do
+  test "should not update completed_course when not logged in" do
     patch completed_course_url(@completed_course), params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
     assert_response :redirect
   end
@@ -132,11 +132,31 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should destroy completed_course" do
+  test "should not destroy completed_course when not logged in" do
+    assert_no_difference('CompletedCourse.count') do
+      delete completed_course_url(@completed_course)
+    end
+
+    assert_response :redirect
+  end
+  #TODO find out why it failed
+  test "should destroy completed_course when logged in as student" do
+    sign_in @student
+
     assert_difference('CompletedCourse.count', -1) do
       delete completed_course_url(@completed_course)
     end
 
-    assert_redirected_to completed_courses_url
+    assert_response :success
+  end
+  #TODO Don't let faculty destroy completed courses
+  test "should not destroy completed_course when logged in as faculty" do
+    sign_in @faculty
+
+    assert_no_difference('CompletedCourse.count') do
+      delete completed_course_url(@completed_course)
+    end
+
+    assert_response :redirect
   end
 end
