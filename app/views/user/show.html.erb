@@ -24,7 +24,7 @@
     </div>
   </div>
   <!-- If you're a student then see completed courses card, if not then just major-->
-  <!-- Doing the if statment here so that I can center the major -->
+  <!-- Doing the if statement here so that I can center the major -->
   <% if current_user.faculty? == false %>
     <!-- Academic -->
     <div class="row justify-content-md-center">
@@ -71,6 +71,19 @@
           </div>
         </div>
       </div>
+      <!-- Completed Courses -->
+      <div class="col col-lg-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Completed Courses</h5>
+            <p class="card-text">
+              See all courses students have completed
+            </p>
+            <%= link_to "See Progress", completed_courses_path(user: current_user), class: "card-link" %>
+          </div>
+        </div>
+      </div>
     </div>
+
   <% end %>
 <% end %>
