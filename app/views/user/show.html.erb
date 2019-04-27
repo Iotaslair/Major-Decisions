@@ -32,10 +32,20 @@
       <div class="col col-lg-4">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">TODO: Major</h5>
-            <h6 class="card-subtitle mb-2 text-muted">major.division</h6>
-            <p class="card-text">major.description</p>
-            <a href="#" class="card-link">View Details</a>
+            <h5 class="card-title">Declared AOC</h5>
+            <h6 class="card-subtitle mb-2 text-muted">TODO: major.division</h6>
+            <p class="card-text">
+              <% if @declared_program %>
+                <%= @declared_program.title %>
+              <% else %>
+              No declared program. Please declare an AOC.
+              <% end %>
+            </p>
+            <% if @declared_program %>
+              <%= link_to "View AOC", major_path(@declared_program), class: 'card-link' %>
+            <% else %>
+            <%= link_to "Declare an AOC", new_declared_program_path, class: 'card-link' %>
+            <% end %>
           </div>
         </div>
       </div>
