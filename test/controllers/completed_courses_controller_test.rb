@@ -75,9 +75,23 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to completed_course_url(CompletedCourse.last)
   end
 
-  test "should show completed_course" do
+  test "should not show completed_course when not logged in" do
+    get completed_course_url(@completed_course)
+    assert_response :redirect
+  end
+
+  test "should show completed_course when logged in as student" do
+    sign_in @student
+
     get completed_course_url(@completed_course)
     assert_response :success
+  end
+  #TODO don't let faculty see a completed course
+  test "should not show completed_course when logged in as faculty" do
+    sign_in @faculty
+
+    get completed_course_url(@completed_course)
+    assert_response :redirect
   end
 
   test "should get edit if signed in" do
