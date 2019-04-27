@@ -18,6 +18,7 @@
           <% if current_user.faculty? %>
             <%= link_to "Courses", courses_path, class: "dropdown-item" %>
             <%= link_to "Manage AOCs", majors_path, class: "dropdown-item" %>
+            <%= link_to "Declared Programs", declared_programs_path, class: "dropdown-item" %>
           <% else %>
             <%= link_to "Academic Progress", completed_courses_path(user: current_user), class: "dropdown-item" %>
             <%= link_to "All AOCs", majors_path, class:"dropdown-item" %>
