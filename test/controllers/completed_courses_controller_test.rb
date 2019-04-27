@@ -94,11 +94,23 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should get edit if signed in" do
-    #sign_in @student
+  test "should not edit when not signed in" do
+    get edit_completed_course_url(@completed_course)
+    assert_response :redirect
+  end
+
+  test "should edit when signed in as student" do
+    sign_in @student
 
     get edit_completed_course_url(@completed_course)
     assert_response :success
+  end
+  #TODO don't let faculty edit a completed course
+  test "should not edit when signed in as faculty" do
+    sign_in @faculty
+
+    get edit_completed_course_url(@completed_course)
+    assert_response :redirect
   end
 
   test "should update completed_course" do
