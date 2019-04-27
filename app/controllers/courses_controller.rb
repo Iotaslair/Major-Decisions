@@ -61,19 +61,18 @@ class CoursesController < ApplicationController
           # Course doesn't exist in requirement area, let's add it!
           requirement_area.courses << does_course_exist
 
-          format.html { redirect_to @course, notice: 'Course already exists, but we added it to the requirement area.' }
+          format.html { redirect_to requirement_area, notice: 'Course already exists, but we added it to the requirement area.' }
 
         else
 
           # Course already exists in requirement area
 
-          format.html { redirect_to @course, notice: 'Course already exists AND is already in requirement area.' }
+          format.html { redirect_to requirement_area, notice: 'Course already exists AND is already in requirement area.' }
         end
       end
 
       if @course.save
-
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to requirement_area, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -88,7 +87,7 @@ class CoursesController < ApplicationController
     authorize @course
 
     respond_to do |format|
-      if @course.update(course_params)
+      if @course.update(title: course_params[:title], description: course_params[:description])
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else

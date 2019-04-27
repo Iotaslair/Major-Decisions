@@ -8,7 +8,7 @@ class CompletedCoursesController < ApplicationController
   # GET /completed_courses
   # GET /completed_courses.json
   def index
-    @completed_courses = CompletedCourse.all
+    @completed_courses = CompletedCourse.where(user_id: current_user)
   end
 
   # GET /completed_courses/1
