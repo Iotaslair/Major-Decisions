@@ -1,5 +1,6 @@
 <% content_for :hero_head do %>
-  <h1><%= icon 'fas', 'user' %> Your Profile</h1>
+  <h1><%= icon 'fas', 'user' %> <%= current_user.firstname %> <%= current_user.lastname %>
+    (<%= current_user.email %>)</h1>
 <% end %>
 
 <% content_for :hero_lead do %>
@@ -13,21 +14,6 @@
 
 <% content_for :content do %>
   <!-- Bio -->
-  <div class="row">
-    <div class="col">
-      <p>
-        <strong><%= icon 'fas', 'at' %> Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %>
-        (<%= current_user.email %>)
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <p>
-        <strong><%= icon('fas', 'user-shield') %> Faculty?</strong> <%= current_user.faculty? %>
-      </p>
-    </div>
-  </div>
   <!-- If you're a student then see completed courses card, if not then just major-->
   <!-- Doing the if statment here so that I can center the major -->
   <% if current_user.faculty? == false %>
