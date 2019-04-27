@@ -8,7 +8,11 @@ class CompletedCoursesController < ApplicationController
   # GET /completed_courses
   # GET /completed_courses.json
   def index
-    @completed_courses = CompletedCourse.where(user_id: current_user)
+    if current_user.faculty?
+      @completed_courses = CompletedCourse.all
+    else
+      @completed_courses = CompletedCourse.where(user_id: current_user)
+    end
   end
 
   # GET /completed_courses/1
@@ -34,11 +38,11 @@ class CompletedCoursesController < ApplicationController
 
     respond_to do |format|
       if @completed_course.save
-        format.html { redirect_to @completed_course, notice: 'Completed course was successfully created.' }
-        format.json { render :show, status: :created, location: @completed_course }
+        format.html {redirect_to @completed_course, notice: 'Completed course was successfully created.'}
+        format.json {render :show, status: :created, location: @completed_course}
       else
-        format.html { render :new }
-        format.json { render json: @completed_course.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @completed_course.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -48,11 +52,11 @@ class CompletedCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @completed_course.update(completed_course_params)
-        format.html { redirect_to @completed_course, notice: 'Completed course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @completed_course }
+        format.html {redirect_to @completed_course, notice: 'Completed course was successfully updated.'}
+        format.json {render :show, status: :ok, location: @completed_course}
       else
-        format.html { render :edit }
-        format.json { render json: @completed_course.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @completed_course.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -62,19 +66,20 @@ class CompletedCoursesController < ApplicationController
   def destroy
     @completed_course.destroy
     respond_to do |format|
-      format.html { redirect_to completed_courses_url, notice: 'Completed course was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to completed_courses_url, notice: 'Completed course was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_completed_course
-      @completed_course = CompletedCourse.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def completed_course_params
-      params.require(:completed_course).permit(:user, :user_id, :course_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_completed_course
+    @completed_course = CompletedCourse.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def completed_course_params
+    params.require(:completed_course).permit(:user, :user_id, :course_id)
+  end
 end
