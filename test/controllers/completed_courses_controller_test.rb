@@ -6,6 +6,7 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @completed_course = completed_courses(:one)
     @student = users(:student)
+    @faculty = users(:faculty)
   end
 
   test "should not get index if not logged in" do
@@ -19,7 +20,7 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     get completed_courses_url
     assert_response :success
   end
-  #TODO fix me
+
   test "should get index if logged in as faculty" do
     sign_in @faculty
 
@@ -34,7 +35,7 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create completed_course" do
     assert_difference('CompletedCourse.count') do
-      post completed_courses_url, params: { completed_course: { course_id: @completed_course.course_id, user_id: @completed_course.user_id } }
+      post completed_courses_url, params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
     end
 
     assert_redirected_to completed_course_url(CompletedCourse.last)
@@ -53,7 +54,7 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update completed_course" do
-    patch completed_course_url(@completed_course), params: { completed_course: { course_id: @completed_course.course_id, user_id: @completed_course.user_id } }
+    patch completed_course_url(@completed_course), params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
     assert_redirected_to completed_course_url(@completed_course)
   end
 
