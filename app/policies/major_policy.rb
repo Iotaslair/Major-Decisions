@@ -17,7 +17,7 @@ class MajorPolicy < ApplicationPolicy
   end
 
   def create?
-    if user.faculty? == false
+    if !user.faculty?
       @error_message = "You must be a faculty member to modify academic programs."
       return false
     else
