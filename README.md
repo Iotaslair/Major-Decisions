@@ -4,7 +4,7 @@ Ruby version: `2.6.0`
 
 Rails version: `5.2.3`
 
-##Bug Fixes
+## Bug Fixes
 
 - [ ] Make Requirements page pretty
 - [ ] Don't let Faculty or Students see Requirements page (/requirements)
