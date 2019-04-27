@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<% content_for :hero_head do %>
+  <h1>Your Current Academic Program</h1>
+<% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @declared_program.user %>
-</p>
+<% content_for :hero_lead do %>
+  <p class="lead">
+    You may edit your declared academic program by clicking on `Edit`.
+  </p>
+<% end %>
 
-<p>
-  <strong>Major:</strong>
-  <%= @declared_program.major %>
-</p>
+<% content_for :hero_button_group do %>
+  <%= link_to 'Edit', edit_declared_program_path(@declared_program), class: 'btn btn-outline-primary' %>
+  <%= link_to 'Your Profile', current_user, class: 'btn btn-outline-secondary' %>
+<% end %>
 
-<%= link_to 'Edit', edit_declared_program_path(@declared_program) %> |
-<%= link_to 'Back', declared_programs_path %>
+<% content_for :content do %>
+  <p>
+    <strong>User:</strong>
+    <%= @declared_program.user.email %>
+  </p>
+
+  <p>
+    <strong>Major:</strong>
+    <%= @declared_program.major.title %>
+  </p>
+<% end %>
