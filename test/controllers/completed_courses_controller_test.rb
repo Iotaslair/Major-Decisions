@@ -113,9 +113,23 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should update completed_course" do
+  test "should not update completed_course when logged in" do
+    patch completed_course_url(@completed_course), params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
+    assert_response :redirect
+  end
+
+  test "should update completed_course when logged in as student" do
+    sign_in @student
+
     patch completed_course_url(@completed_course), params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
     assert_redirected_to completed_course_url(@completed_course)
+  end
+  #TODO don't let faculty update a course
+  test "should not update completed_course when logged in as faculty" do
+    sign_in @faculty
+
+    patch completed_course_url(@completed_course), params: {completed_course: {course_id: @completed_course.course_id, user_id: @completed_course.user_id}}
+    assert_response :redirect
   end
 
   test "should destroy completed_course" do
