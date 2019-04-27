@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @declared_program.user %>
+</p>
+
+<p>
+  <strong>Major:</strong>
+  <%= @declared_program.major %>
+</p>
+
+<%= link_to 'Edit', edit_declared_program_path(@declared_program) %> |
+<%= link_to 'Back', declared_programs_path %>
