@@ -45,7 +45,8 @@ class RequirementsController < ApplicationController
 
     respond_to do |format|
       if @requirement.save
-        format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
+        #format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }
+        format.html { redirect_to major_path(@requirement.major), notice: "Requirement area successfully added."}
         format.json { render :show, status: :created, location: @requirement }
       else
         format.html { render :new, locals: { major: params[:major] } }
