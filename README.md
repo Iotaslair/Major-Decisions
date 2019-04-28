@@ -6,7 +6,7 @@ Rails version: `5.2.3`
 
 ##Bug Fixes
 
-- [ ] Make Requirements page pretty
+- [ x ] Make Requirements page pretty -- Kyle see prettyRequirements branch
 - [ ] Don't let Faculty or Students see Requirements page (/requirements)
 - [ ] Fix profile page's TODO: major
 - [ ] Make Admin accounts
