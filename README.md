@@ -20,7 +20,7 @@ Rails version: `5.2.3`
 - [ ] Get rid of dropdown for completed courses as a student (Make like Google's homepage when you search)
 - [ ] No way to signify when you took a course (ex. Took Fall 2018)
 - [ ] William's bootstrap code for courses taken (see above)
-- [ ] Search all courses offered so you don't have to scroll forever(/courses)
+- [x] Search all courses/AOC's offered so you don't have to scroll forever(/courses) --kyle see visualFixes branch
 - [ ] Allow students to choose their AOC
 - [ ] Put link for AOC not in dropdown menu but in Navbar  -- William in progress
 - [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
