@@ -12,7 +12,6 @@
   <% if current_user.faculty? %>
     <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-outline-primary" %>
   <% end %>
-  <%= link_to 'Back', courses_path, class: "btn btn-outline-secondary" %>
 <% end %>
 
 <% content_for :content do %>
