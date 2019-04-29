@@ -21,7 +21,7 @@ Rails version: `5.2.3`
 - [ ] Search all courses offered so you don't have to scroll forever(/courses)
 - [ ] Put link for AOC not in dropdown menu but in Navbar  -- William in progress
 - [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
-- [ ] Don't allow students to say they took a course twice
+- [x] Don't allow students to say they took a course twice
 
 ## Developing locally
 Make sure to seed the database (`rails db:seed`). To reset the _local_ database, run `rails db:reset` (note that this will automatically follow up with `rails db:seed`).

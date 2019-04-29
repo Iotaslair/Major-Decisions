@@ -37,7 +37,10 @@ class CompletedCoursesController < ApplicationController
     # TODO: Don't allow user to specify a course as completed if the user has ALREADY completed it
 
     respond_to do |format|
-      if @completed_course.save
+      if CompletedCourse.where(user_id: current_user, course_id: @completed_course.course_id).size != 0
+        format.html {redirect_to @completed_course, notice: 'Course already completed.'}
+        format.json {render :show, status: :ok, location: @completed_course}
+      elsif @completed_course.save
         format.html {redirect_to @completed_course, notice: 'Completed course was successfully created.'}
         format.json {render :show, status: :created, location: @completed_course}
       else
