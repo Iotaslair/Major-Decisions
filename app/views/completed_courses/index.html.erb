@@ -39,5 +39,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Completed Course', new_completed_course_path(user: current_user) %>
+<% if !current_user.faculty? %>
+  <%= link_to 'New Completed Course', new_completed_course_path(user: current_user) %>
+<% end %>
