@@ -33,4 +33,13 @@ class DeclaredProgramPolicy < ApplicationPolicy
     return false
   end
 
+  def index?
+    if user.faculty?
+      return true
+    else
+      @error_message = "Only faculty members can see all completed courses."
+      return false
+    end
+  end
+
 end

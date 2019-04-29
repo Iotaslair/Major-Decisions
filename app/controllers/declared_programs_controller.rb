@@ -7,6 +7,7 @@ class DeclaredProgramsController < ApplicationController
   # GET /declared_programs.json
   def index
     @declared_programs = DeclaredProgram.all
+    authorize @declared_programs
   end
 
   # GET /declared_programs/1
