@@ -36,7 +36,7 @@ class CompletedCoursesController < ApplicationController
 
     respond_to do |format|
       if CompletedCourse.where(user_id: current_user, course_id: @completed_course.course_id).size != 0
-        format.html {redirect_to @completed_course, notice: 'Course already completed.'}
+        format.html {redirect_to @completed_course, alert: 'Course already completed.'}
         format.json {render :show, status: :ok, location: @completed_course}
       elsif @completed_course.save
         format.html {redirect_to @completed_course, notice: 'Completed course was successfully created.'}
