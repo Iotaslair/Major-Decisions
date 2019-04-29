@@ -16,11 +16,11 @@
 <% content_for :content do %>
   <p>
     <strong>User:</strong>
-    <%= @declared_program.user.email %>
+    <%= @declared_program.user.firstname + " " + @declared_program.user.lastname %>
   </p>
 
   <p>
-    <strong>Major:</strong>
+    <strong>AOC:</strong>
     <%= @declared_program.major.title %>
   </p>
 <% end %>
