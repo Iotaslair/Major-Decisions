@@ -1,6 +1,17 @@
-<h1>Editing Academic Program</h1>
+<% content_for :hero_head do %>
+  <h1>Editing Academic Program</h1>
+<% end %>
 
-<%= render 'form', major: @major %>
+<% content_for :hero_lead do %>
+  <p class="lead">
+    Edit the title or description of the following academic program.
+  </p>
+<% end %>
 
-<%= link_to 'Show', @major %> |
-<%= link_to 'Back', majors_path %>
+<% content_for :hero_button_group do %>
+  <%= link_to 'View All AOCs', majors_path, class: "btn btn-outline-secondary" %>
+<% end %>
+
+<% content_for :content do %>
+  <%= render 'form', major: @major %>
+<% end %>
