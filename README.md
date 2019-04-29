@@ -19,7 +19,7 @@ Rails version: `5.2.3`
 - [ ] No way to signify when you took a course (ex. Took Fall 2018)
 - [ ] William's bootstrap code for courses taken (see above)
 - [ ] Search all courses offered so you don't have to scroll forever(/courses)
-- [x] Put link for AOC not in dropdown menu but in Navbar  -- William in progress
+- [x] Put link for AOC not in dropdown menu but in Navbar 
 - [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
 - [ ] Don't allow students to say they took a course twice
 
