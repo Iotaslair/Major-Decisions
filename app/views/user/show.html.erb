@@ -1,28 +1,19 @@
 <% content_for :hero_head do %>
-  <h1><%= icon 'fas', 'user' %> Your Profile</h1>
+  <h1><%= icon 'fas', 'user' %> <%= current_user.firstname %> <%= current_user.lastname %>
+    (<%= current_user.email %>)</h1>
 <% end %>
 
 <% content_for :hero_lead do %>
+  <% if current_user.faculty? %>
+    <span class="badge badge-pill badge-primary">Faculty Account</span>
+  <% else %>
+    <span class="badge badge-pill badge-primary">Student Account</span>
+  <% end %>
   View your academic information, such as completed coursework, here.
 <% end %>
 
 <% content_for :content do %>
   <!-- Bio -->
-  <div class="row">
-    <div class="col">
-      <p>
-        <strong><%= icon 'fas', 'at' %> Your name:</strong> <%= current_user.firstname %> <%= current_user.lastname %>
-        (<%= current_user.email %>)
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <p>
-        <strong><%= icon('fas', 'user-shield') %> Faculty?</strong> <%= current_user.faculty? %>
-      </p>
-    </div>
-  </div>
   <!-- If you're a student then see completed courses card, if not then just major-->
   <!-- Doing the if statment here so that I can center the major -->
   <% if current_user.faculty? == false %>
@@ -32,10 +23,19 @@
       <div class="col col-lg-4">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">TODO: Major</h5>
-            <h6 class="card-subtitle mb-2 text-muted">major.division</h6>
-            <p class="card-text">major.description</p>
-            <a href="#" class="card-link">View Details</a>
+            <h5 class="card-title">Declared AOC</h5>
+            <p class="card-text">
+              <% if @declared_program %>
+                <%= @declared_program.title %>
+              <% else %>
+                No declared program. Please declare an AOC.
+              <% end %>
+            </p>
+            <% if @declared_program %>
+              <%= link_to "View AOC", major_path(@declared_program), class: 'card-link' %>
+            <% else %>
+              <%= link_to "Declare an AOC", new_declared_program_path, class: 'card-link' %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -61,13 +61,22 @@
   <% else %>
     <div class="row justify-content-md-center">
       <!-- AOC -->
-      <div class="col col-lg-4">
-        <div class="card" style="width: 18rem;">
+      <div class="col col-lg-6">
+        <div class="card" style="width: 20rem;">
           <div class="card-body">
-            <h5 class="card-title">TODO: Major</h5>
-            <h6 class="card-subtitle mb-2 text-muted">major.division</h6>
-            <p class="card-text">major.description</p>
-            <a href="#" class="card-link">View Details</a>
+            <h5 class="card-title">Teaching</h5>
+            <p class="card-text">
+              <% if @declared_program %>
+                <%= @declared_program.title %>
+              <% else %>
+                You haven't declared what AOC you're teaching.
+              <% end %></p>
+            <% if @declared_program %>
+              <%= link_to "My AOC", major_path(@declared_program), class: 'card-link' %>
+            <% else %>
+              <%= link_to "Declare AOC", new_declared_program_path, class: 'card-link' %>
+            <% end %>
+            <%= link_to "All declared AOCs", declared_programs_url, class: 'card-link' %>
           </div>
         </div>
       </div>
