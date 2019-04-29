@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <%= form.hidden_field :major, value: params[:major] %>
+  <%= form.hidden_field :major, value: @requirement.major ? @requirement.major.id : params[:major] %>
 
   <div class="row mb-3">
     <div class="col">
