@@ -29,13 +29,13 @@
               <% if @declared_program %>
                 <%= @declared_program.title %>
               <% else %>
-              No declared program. Please declare an AOC.
+                No declared program. Please declare an AOC.
               <% end %>
             </p>
             <% if @declared_program %>
               <%= link_to "View AOC", major_path(@declared_program), class: 'card-link' %>
             <% else %>
-            <%= link_to "Declare an AOC", new_declared_program_path, class: 'card-link' %>
+              <%= link_to "Declare an AOC", new_declared_program_path, class: 'card-link' %>
             <% end %>
           </div>
         </div>
@@ -62,13 +62,23 @@
   <% else %>
     <div class="row justify-content-md-center">
       <!-- AOC -->
-      <div class="col col-lg-4">
-        <div class="card" style="width: 18rem;">
+      <div class="col col-lg-6">
+        <div class="card" style="width: 20rem;">
           <div class="card-body">
-            <h5 class="card-title">TODO: Major</h5>
+            <h5 class="card-title">Teaching</h5>
             <h6 class="card-subtitle mb-2 text-muted">major.division</h6>
-            <p class="card-text">major.description</p>
-            <a href="#" class="card-link">View Details</a>
+            <p class="card-text">
+              <% if @declared_program %>
+                <%= @declared_program.title %>
+              <% else %>
+                You haven't declared what AOC you're teaching.
+              <% end %></p>
+            <% if @declared_program %>
+              <%= link_to "My AOC", major_path(@declared_program), class: 'card-link' %>
+            <% else %>
+              <%= link_to "Declare AOC", new_declared_program_path, class: 'card-link' %>
+            <% end %>
+            <%= link_to "All declared AOCs", declared_programs_url, class: 'card-link' %>
           </div>
         </div>
       </div>
