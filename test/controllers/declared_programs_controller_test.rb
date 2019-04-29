@@ -70,39 +70,27 @@ class DeclaredProgramsControllerTest < ActionDispatch::IntegrationTest
   #   end
   # end
 
-  test "should show declared major if logged in as student" do
+  #Works on website idk how to fix
+  test "should get edit if student" do
     sign_in @student
 
-    get declared_program_url(@one)
+    get edit_declared_program_url(@one)
     assert_response :success
   end
+  #Works on website idk how to fix
+  test "should update declared AOC if student" do
+    sign_in @student
 
-  test "should get edit if faculty" do
-    sign_in @faculty
-
-    get edit_major_url(@major)
-    assert_response :success
-  end
-
-  test "should update major if faculty" do
-    sign_in @faculty
-
-    patch major_url(@major), params: { major: { title: "New Computer Science" } }
+    patch declared_program_url(@one), params: { major: { title: "New Computer Science" } }
     #assert_redirected_to major_url(@major)
   end
 
   test "should never destroy major" do
-    sign_in @faculty
+    sign_in @student
 
-    # assert_difference('Major.count', -1) do
-    #   delete major_url(@major)
-    # end
-
-    assert_no_difference('Major.count') do
-      delete major_url(@major)
+    assert_no_difference('DeclaredProgram.count') do
+      delete declared_program_url(@one)
     end
-
-    #assert_redirected_to majors_url
   end
 
 end
