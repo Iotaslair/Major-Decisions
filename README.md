@@ -4,13 +4,11 @@ Ruby version: `2.6.0`
 
 Rails version: `5.2.3`
 
-##Bug Fixes
+## Todo
+**Only use this for minor bugs/to-dos/fix-mes. Create an issue and add the 'enhancement' label if it's big/important.**
 
 - [x] Make Requirements page pretty -- Kyle see prettyRequirements branch
 - [ ] Don't let Faculty or Students see Requirements page (/requirements)
-- [ ] Fix profile page's TODO: major
-- [ ] Make Admin accounts
-- [ ] Allow Admins to delete courses and various other pages
 - [ ] Back buttons are weird in a few different places. 
         Click on one of the majors, then click a course in that major (that's also in another major), click on the other major, click back
         Maybe more places where it fails
@@ -21,10 +19,11 @@ Rails version: `5.2.3`
 - [ ] No way to signify when you took a course (ex. Took Fall 2018)
 - [ ] William's bootstrap code for courses taken (see above)
 - [x] Search all courses/AOC's offered so you don't have to scroll forever(/courses) --kyle see visualFixes branch
-- [ ] Allow students to choose their AOC
-- [ ] Put link for AOC not in dropdown menu but in Navbar  -- William in progress
+- [x] Allow students to choose their AOC- [ ] Search all courses offered so you don't have to scroll forever(/courses)
+- [x] Put link for AOC not in dropdown menu but in Navbar 
 - [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
 - [ ] Don't allow students to say they took a course twice
+- [x] Fixed links in footer and navbar
 
 ## Developing locally
 Make sure to seed the database (`rails db:seed`). To reset the _local_ database, run `rails db:reset` (note that this will automatically follow up with `rails db:seed`).
