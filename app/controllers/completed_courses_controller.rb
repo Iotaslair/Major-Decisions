@@ -34,8 +34,6 @@ class CompletedCoursesController < ApplicationController
   def create
     @completed_course = CompletedCourse.new(completed_course_params)
 
-    # TODO: Don't allow user to specify a course as completed if the user has ALREADY completed it
-
     respond_to do |format|
       if CompletedCourse.where(user_id: current_user, course_id: @completed_course.course_id).size != 0
         format.html {redirect_to @completed_course, notice: 'Course already completed.'}
