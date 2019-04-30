@@ -16,7 +16,15 @@ class UserController < ApplicationController
       # Track degree progress
 
       # Courses belonging to major
-      @major_courses = Requirement.where(major_id: @declared_program.major_id).courses
+      @major_courses = []
+
+      for req in Requirement.where(major_id: @declared_program.id)
+          @course_reqs = CourseRequirement.where(requirement_id: req.id)
+
+          for c_req in @course_reqs
+            @major_courses.push(Course.where(id: c_req.course_id).first)
+          end
+      end
 
       # Courses completed by user
       @completed_courses = @user.completed_courses
@@ -24,7 +32,15 @@ class UserController < ApplicationController
       # Courses still needed for major
       @courses_left = []
       for course in @major_courses
-        if !@completed_courses.include? course
+        done = false
+        for c_course in @completed_courses
+          if c_course.course_id == course.id
+            done = true
+          end
+        end
+        if !done
+          #test
+          #@courses_left.push(course.title + ",")
           @courses_left.push(course)
         end
       end
