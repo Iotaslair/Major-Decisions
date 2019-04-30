@@ -15,6 +15,7 @@
     <%= link_to "Add Requirement Area", new_requirement_path(major: @major.id), class: "btn btn-outline-primary btn-large" %>
   <% else %>
     <%= link_to "Mark Course as Complete", new_completed_course_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Change AOC", edit_declared_program_path(current_user.declared_programs.first), class: "btn btn-outline-danger" %>
     <%= link_to "Back", majors_path, class: "btn btn-outline-secondary btn-large" %>
   <% end %>
 <% end %>
