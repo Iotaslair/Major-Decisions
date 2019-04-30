@@ -15,33 +15,32 @@ class UserController < ApplicationController
 
       # Track degree progress
 
-      # Courses belonging to major
-      @major_courses = []
-
-      for req in Requirement.where(major_id: @declared_program.id)
-          @course_reqs = CourseRequirement.where(requirement_id: req.id)
-
-          for c_req in @course_reqs
-            @major_courses.push(Course.where(id: c_req.course_id).first)
-          end
-      end
-
       # Courses completed by user
       @completed_courses = @user.completed_courses
 
       # Courses still needed for major
-      @courses_left = []
-      for course in @major_courses
-        done = false
-        for c_course in @completed_courses
-          if c_course.course_id == course.id
-            done = true
+      @requirements_left = []
+
+      # Courses belonging to major
+      @major_courses = []
+
+      for req in Requirement.where(major_id: @declared_program.id)
+        @course_reqs = CourseRequirement.where(requirement_id: req.id)
+
+        num_completed = 0
+
+        for c_req in @course_reqs
+          @req_course = Course.where(id: c_req.course_id).first
+
+          for c_course in @completed_courses
+            if c_course.course_id == @req_course.id
+              num_completed += 1
+            end
           end
         end
-        if !done
-          #test
-          #@courses_left.push(course.title + ",")
-          @courses_left.push(course)
+
+        if num_completed < req.num_required
+          @requirements_left.push(req.name + ": " +  (req.num_required - num_completed).to_s + " courses left")
         end
       end
     end
