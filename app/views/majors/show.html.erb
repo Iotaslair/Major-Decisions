@@ -13,8 +13,10 @@
   <% if current_user.faculty? %>
     <%= link_to "Edit AOC", edit_major_path(@major), class: "btn btn-outline-primary btn-large" %>
     <%= link_to "Add Requirement Area", new_requirement_path(major: @major.id), class: "btn btn-outline-primary btn-large" %>
+  <% else %>
+    <%= link_to "Mark Course as Complete", new_completed_course_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Back", majors_path, class: "btn btn-outline-secondary btn-large" %>
   <% end %>
-  <%= link_to "Back", majors_path, class: "btn btn-outline-secondary btn-large" %>
 <% end %>
 
 <% content_for :content do %>
@@ -52,7 +54,16 @@
           <tbody>
           <% requirement.courses.each do |course| %>
             <tr>
-              <td class="col-md-2"> <%= link_to course.title, course_path(course) %></td>
+              <td class="col-md-2">
+                <% if !current_user.faculty? %>
+                  <% if current_user.completed_courses.exists?(course_id: course) %>
+                    <span class="badge badge-pill badge-success">Complete</span>
+                  <% else %>
+                    <a href="#" class="badge badge-danger">Incomplete</a>
+                  <% end %>
+                <% end %>
+                <%= link_to course.title, course_path(course) %>
+              </td>
               <td class="col-md-2">
                 <% if course.has_children? %>
                   <%= course.children.first.title %>
