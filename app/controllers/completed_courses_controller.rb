@@ -34,7 +34,7 @@ class CompletedCoursesController < ApplicationController
 
     respond_to do |format|
       if @completed_course.save
-        format.html { redirect_to @completed_course, notice: 'Completed course was successfully created.' }
+        format.html { redirect_to completed_courses_path(current_user), notice: 'Course was marked as complete.' }
         format.json { render :show, status: :created, location: @completed_course }
       else
         format.html { render :new }
