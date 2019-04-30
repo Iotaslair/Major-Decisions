@@ -5,13 +5,18 @@
 
 <!-- Place the lead content here, such as a description -->
 <% content_for :hero_lead do %>
-  <p class="lead">All of the academic programs (Areas of Concentration; AOCs).</p>
+  <p class="lead">
+    All of the academic programs (Areas of Concentration; AOCs).
+    <% if !current_user.faculty? %>
+    View an AOC to see your current course progress with respect to that AOC.
+    <% end %>
+  </p>
 <% end %>
 
 <!-- Place the corresponding actions here -->
 <% content_for :hero_button_group do %>
   <% if current_user.faculty? %>
-  <%= link_to "Create AOC", new_major_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Create AOC", new_major_path, class: "btn btn-outline-primary" %>
   <% end %>
 <% end %>
 
