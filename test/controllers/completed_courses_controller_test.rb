@@ -39,7 +39,7 @@ class CompletedCoursesControllerTest < ActionDispatch::IntegrationTest
     get new_completed_course_url
     assert_response :success
   end
-  #TODO make it so faculty can't add completed courses
+
   test "should not get new when logged in as faculty" do
     sign_in @faculty
 

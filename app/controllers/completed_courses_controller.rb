@@ -23,6 +23,7 @@ class CompletedCoursesController < ApplicationController
   # GET /completed_courses/new
   def new
     @completed_course = CompletedCourse.new
+    authorize @completed_course
   end
 
   # GET /completed_courses/1/edit
