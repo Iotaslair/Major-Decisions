@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for :hero_head do %>
 <h1>Completed Courses</h1>
+<% end %>
 
+<% content_for :hero_lead do %>
+  <p> This is where you can see all of the courses you have completed so far and add more.</p>
+<% end %>
+
+<% content_for :content do %>
 <table>
   <thead>
     <tr>
@@ -25,3 +32,4 @@
 <br>
 
 <%= link_to 'New Completed Course', new_completed_course_path(user: current_user) %>
+<% end %>

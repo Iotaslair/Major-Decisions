@@ -1,5 +1,14 @@
+<% content_for :hero_head do %>
 <h1>New Completed Course</h1>
+<% end %>
 
+<% content_for :hero_lead do %>
+<p>Add a course to your list of completed courses.</p>
+<% end %>
+
+
+<% content_for :content do %>
 <%= render 'form', completed_course: @completed_course %>
 
 <%= link_to 'Back', completed_courses_path %>
+<% end %>
