@@ -34,7 +34,17 @@ class CompletedCoursesController < ApplicationController
 
     respond_to do |format|
       if @completed_course.save
-        format.html { redirect_to completed_courses_path(current_user), notice: 'Course was marked as complete.' }
+
+        # Redirect to the user's declared program if one exists
+        if current_user.declared_programs.first
+          format.html { redirect_to major_path(current_user.declared_programs.first), notice: 'Course was marked as complete.' }
+        else
+
+          # Else, go to their completed courses list
+          format.html { redirect_to completed_courses_path, notice: 'Course was marked as complete.' }
+        end
+
+        # JSON stuff
         format.json { render :show, status: :created, location: @completed_course }
       else
         format.html { render :new }
