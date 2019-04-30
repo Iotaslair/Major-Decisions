@@ -10,7 +10,11 @@
 
 <% content_for :hero_button_group do %>
   <%= link_to 'Add Completed Course', new_completed_course_path, class: 'btn btn-outline-primary' %>
-  <%= link_to "Change AOC", edit_declared_program_path(current_user.declared_programs.first), class: 'btn btn-outline-danger' %>
+  <% if current_user.declared_programs.first %>
+    <%= link_to "Change AOC", edit_declared_program_path(current_user.declared_programs.first), class: 'btn btn-outline-danger' %>
+  <% else %>
+    <%= link_to "Declare AOC", new_declared_program_path, class: 'btn btn-outline-secondary' %>
+  <% end %>
   <%= link_to "Your Profile", current_user, class: "btn btn-outline-secondary" %>
 <% end %>
 
