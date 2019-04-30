@@ -16,11 +16,18 @@
   <div class="row mb-3">
     <div class="col">
       <%= form.label :major_id %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
       <%= form.collection_select :major_id, Major.order(:title), :id, :title, class: "form-control" %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.submit "Change AOC", class: "btn btn-danger" %>
+    </div>
   </div>
 <% end %>
