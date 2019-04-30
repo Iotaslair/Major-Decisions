@@ -23,15 +23,15 @@
         <h5 class="card-title">Pre-requisites</h5>
         <h6 class="card-subtitle mb-2 text-muted">ALL pre-requisites</h6>
         <p class="card-text">
-            <% if @course.has_children? %>
-              <ul>
-                <% @course.all_prereqs.each do |course|%>
-                <li><%= link_to course.title, course_path(course) %></li>
-                <% end %>
-              </ul>
-            <% else %>
-        Did not currently find any pre-requisite course specified.
+          <% if @course.has_children? %>
+          <ul>
+            <% @course.all_prereqs.each do |course| %>
+              <li><%= link_to course.title, course_path(course) %></li>
             <% end %>
+          </ul>
+        <% else %>
+          Did not currently find any pre-requisite course specified.
+        <% end %>
         </p>
       </div>
     </div>
@@ -42,11 +42,11 @@
         <h5 class="card-title">Relevant Programs</h5>
         <h6 class="card-subtitle mb-2 text-muted">All relevant AOCs for this course</h6>
         <p class="card-text">
-          <ul>
-            <% @course.all_majors.each do |major| %>
+        <ul>
+          <% @course.all_majors.each do |major| %>
             <li><%= link_to major.title, major_path(major) %></li>
-            <% end %>
-          </ul>
+          <% end %>
+        </ul>
         </p>
       </div>
     </div>

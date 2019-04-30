@@ -18,6 +18,7 @@ class CompletedCoursesController < ApplicationController
   # GET /completed_courses/1
   # GET /completed_courses/1.json
   def show
+    authorize @completed_course
   end
 
   # GET /completed_courses/new
@@ -28,6 +29,7 @@ class CompletedCoursesController < ApplicationController
 
   # GET /completed_courses/1/edit
   def edit
+    authorize @completed_course
   end
 
   # POST /completed_courses
@@ -66,6 +68,7 @@ class CompletedCoursesController < ApplicationController
   # DELETE /completed_courses/1
   # DELETE /completed_courses/1.json
   def destroy
+    authorize @completed_course
     @completed_course.destroy
     respond_to do |format|
       format.html {redirect_to completed_courses_url, notice: 'Completed course was successfully destroyed.'}

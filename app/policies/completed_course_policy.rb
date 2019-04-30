@@ -19,7 +19,7 @@ class CompletedCoursePolicy < ApplicationPolicy
 
   def create?
     if user.faculty?
-      @error_message = "You must be a student to say you completed a course."
+      @error_message = "You must be a student to completed a course."
       return false
     else
       return true
@@ -27,6 +27,10 @@ class CompletedCoursePolicy < ApplicationPolicy
   end
 
   def destroy?
+    new?
+  end
+
+  def show?
     new?
   end
 end
