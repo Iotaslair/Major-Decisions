@@ -42,7 +42,7 @@ class CompletedCoursesController < ApplicationController
 
         # Redirect to the user's declared program if one exists
         if current_user.declared_programs.first
-          format.html { redirect_to major_path(current_user.declared_programs.first), notice: 'Course was marked as complete.' }
+          format.html { redirect_to major_path(current_user.declared_programs.first.major_id), notice: 'Course was marked as complete.' }
         else
 
           # Else, go to their completed courses list
