@@ -38,12 +38,19 @@ class CompletedCoursesController < ApplicationController
     @completed_course = CompletedCourse.new(completed_course_params)
 
     respond_to do |format|
-      if CompletedCourse.where(user_id: current_user, course_id: @completed_course.course_id).size != 0
-        format.html {redirect_to @completed_course, alert: 'Course already completed.'}
-        format.json {render :show, status: :ok, location: @completed_course}
-      elsif @completed_course.save
-        format.html {redirect_to @completed_course, notice: 'Completed course was successfully created.'}
-        format.json {render :show, status: :created, location: @completed_course}
+      if @completed_course.save
+
+        # Redirect to the user's declared program if one exists
+        if current_user.declared_programs.first
+          format.html { redirect_to major_path(current_user.declared_programs.first), notice: 'Course was marked as complete.' }
+        else
+
+          # Else, go to their completed courses list
+          format.html { redirect_to completed_courses_path, notice: 'Course was marked as complete.' }
+        end
+
+        # JSON stuff
+        format.json { render :show, status: :created, location: @completed_course }
       else
         format.html {render :new}
         format.json {render json: @completed_course.errors, status: :unprocessable_entity}
@@ -77,14 +84,8 @@ class CompletedCoursesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_completed_course
-    @completed_course = CompletedCourse.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def completed_course_params
-    params.require(:completed_course).permit(:user, :user_id, :course_id)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def completed_course_params
+      params.require(:completed_course).permit(:user_id, :course_id)
+    end
 end

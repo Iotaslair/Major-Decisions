@@ -15,12 +15,19 @@
 
   <div class="row mb-3">
     <div class="col">
-      <%= form.label :major_id %>
+      <%= form.label :major_id, 'List of Areas of Concentration (AOCs)' %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
       <%= form.collection_select :major_id, Major.order(:title), :id, :title, class: "form-control" %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

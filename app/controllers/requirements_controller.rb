@@ -9,6 +9,7 @@ class RequirementsController < ApplicationController
   # GET /requirements.json
   def index
     @requirements = Requirement.all
+    authorize @requirements
   end
 
   # GET /requirements/1
