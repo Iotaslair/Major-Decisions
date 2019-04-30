@@ -40,7 +40,12 @@ class UserController < ApplicationController
         end
 
         if num_completed < req.num_required
-          @requirements_left.push(req.name + ": " +  (req.num_required - num_completed).to_s + " courses left")
+          num_left = req.num_required - num_completed
+          if num_left > 1
+            @requirements_left.push(req.name + ": " +  num_left.to_s + " courses left")
+          else
+            @requirements_left.push(req.name + ": " +  num_left.to_s + " course left")
+          end
         end
       end
     end

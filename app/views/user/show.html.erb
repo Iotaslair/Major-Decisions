@@ -32,6 +32,14 @@
                 No declared program. Please declare an AOC.
               <% end %>
             </p>
+              <%if @requirements_left%>
+                <p>Degree Requirements Left:</p>
+                <ul>
+                  <%for item in @requirements_left %>
+                    <li><%=item %><li/>
+                  <%end %>
+                </ul>
+              <%end %>
             <% if @declared_program %>
               <%= link_to "View AOC", major_path(@declared_program), class: 'card-link' %>
             <% else %>
@@ -97,4 +105,9 @@
     </div>
 
   <% end %>
+  <%if @requirements_left && !@user.faculty %>
+    <%for item in @requirements_left %>
+      <%=item %>
+    <%end %>
+  <%end %>
 <% end %>
