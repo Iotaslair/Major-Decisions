@@ -15,9 +15,12 @@
 <% end %>
 
 <% content_for :content do %>
-  <div class="list-group">
+  <ul class="list-group">
     <% @completed_courses.each do |course_record| %>
-    <%= link_to course_record.course.title, completed_course_path(course_record), class: 'list-group-item list-group-item-action' %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to course_record.course.title, completed_course_path(course_record) %>
+        <span class="badge badge-pill badge-success">Complete</span>
+      </li>
     <% end %>
-  </div>
+  </ul>
 <% end %>
