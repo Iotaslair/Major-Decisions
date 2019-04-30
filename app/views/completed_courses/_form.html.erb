@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :user_id, value: params[:user] %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="row mb-3">
     <div class="col">

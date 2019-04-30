@@ -75,6 +75,6 @@ class CompletedCoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def completed_course_params
-      params.require(:completed_course).permit(:user, :user_id, :course_id)
+      params.require(:completed_course).permit(:user_id, :course_id)
     end
 end
