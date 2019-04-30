@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-
-  resources :completed_courses
+  
   root to: 'home#index'
 
   # User
   get 'user/:id', to: 'user#show', as: :user
   devise_for :users
+
+  # Completed courses
+  resources :completed_courses
+
+  # Declared academic programs
+  resources :declared_programs
 
   # custom signin, signout, and signup routes for devise
   devise_scope :user do

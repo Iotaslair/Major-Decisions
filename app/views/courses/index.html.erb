@@ -4,13 +4,15 @@
 
 <% content_for :hero_lead do %>
   <p class="lead">
-    All courses for all academic programs. To add a course, visit an academic program and add a course to a requirement area.<br/>
+    All courses for all academic programs. <%if current_user.faculty?  %> To add a course, visit an academic program and add a course to a requirement area.<br/>
     You can view the full list of pre-requisite courses by viewing (clicking) the individual course.
+      <%end %>
   </p>
 <% end %>
 
 <% content_for :content do %>
-<table class="table table-hover">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Courses.." title="Type in a Course">
+<table class="table table-hover" id="myTable">
   <thead class="thead-dark">
     <tr>
       <th class="col-md-1">Title</th>
@@ -31,4 +33,24 @@
     <% end %>
   </tbody>
 </table>
+  <script>
+      function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                  } else {
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+      }
+  </script>
 <% end %>

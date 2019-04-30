@@ -11,16 +11,23 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :user_id, value: params[:user] %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="row mb-3">
     <div class="col">
       <%= form.label :course_id %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
       <%= form.collection_select :course_id, Course.order(:title), :id, :title, class: "form-control" %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= form.submit "Complete", class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

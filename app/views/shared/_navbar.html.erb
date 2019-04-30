@@ -4,7 +4,7 @@
     <!--<h5 class="my-0 mr-md-auto font-weight-normal">NCF Planner</h5>-->
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="#">About</a>
-      <a class="p-2 text-dark" href="#">AOCs</a>
+      <a class="p-2 text-dark" href="/majors">AOCs</a>
       <a class="p-2 text-dark" href="#">Support</a>
     </nav>
     <% if user_signed_in? %>
@@ -18,8 +18,11 @@
           <% if current_user.faculty? %>
             <%= link_to "Courses", courses_path, class: "dropdown-item" %>
             <%= link_to "Manage AOCs", majors_path, class: "dropdown-item" %>
+            <%= link_to "Declared Programs", declared_programs_path, class: "dropdown-item" %>
           <% else %>
             <%= link_to "Academic Progress", completed_courses_path(user: current_user), class: "dropdown-item" %>
+            <%= link_to "All Courses", courses_path, class:"dropdown-item" %>
+            <%= link_to "View AOCs", majors_path, class: "dropdown-item" %>
           <% end %>
           <div class="dropdown-divider"></div>
           <%= link_to "Signout", signout_path, class: "dropdown-item" %>

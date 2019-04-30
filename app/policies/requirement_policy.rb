@@ -29,4 +29,8 @@ class RequirementPolicy < ApplicationPolicy
     @error_message = "Courses cannot currently be deleted."
     return false
   end
+
+  def index?
+    return false
+  end
 end

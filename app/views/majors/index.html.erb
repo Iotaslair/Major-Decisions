@@ -5,19 +5,25 @@
 
 <!-- Place the lead content here, such as a description -->
 <% content_for :hero_lead do %>
-  <p class="lead">All of the academic programs (Areas of Concentration; AOCs).</p>
+  <p class="lead">
+    All of the academic programs (Areas of Concentration; AOCs).
+    <% if !current_user.faculty? %>
+    View an AOC to see your current course progress with respect to that AOC.
+    <% end %>
+  </p>
 <% end %>
 
 <!-- Place the corresponding actions here -->
 <% content_for :hero_button_group do %>
   <% if current_user.faculty? %>
-  <%= link_to "Create AOC", new_major_path, class: "btn btn-outline-primary" %>
+    <%= link_to "Create AOC", new_major_path, class: "btn btn-outline-primary" %>
   <% end %>
 <% end %>
 
 <!-- Place the main content here if using this hero system -->
 <% content_for :content do %>
-  <table class="table table-hover">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for AOC's.." title="Type in a Title">
+  <table class="table table-hover" id="myTable">
     <thead class="thead-dark">
     <tr>
       <th>Title</th>
@@ -36,4 +42,25 @@
     <% end %>
     </tbody>
   </table>
+
+  <script>
+      function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                      tr[i].style.display = "";
+                  } else {
+                      tr[i].style.display = "none";
+                  }
+              }
+          }
+      }
+  </script>
 <% end %>
