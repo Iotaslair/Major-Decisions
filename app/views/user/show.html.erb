@@ -15,7 +15,7 @@
 <% content_for :content do %>
   <!-- Bio -->
   <!-- If you're a student then see completed courses card, if not then just major-->
-  <!-- Doing the if statment here so that I can center the major -->
+  <!-- Doing the if statement here so that I can center the major -->
   <% if current_user.faculty? == false %>
     <!-- Academic -->
     <div class="row justify-content-md-center">
@@ -31,6 +31,19 @@
                 No declared program. Please declare an AOC.
               <% end %>
             </p>
+            <% if @requirements_left %>
+              <p>Degree Requirements Left:</p>
+              <p class="card-text">
+                <ul>
+                  <% for item in @requirements_left %>
+                    <li><%= item %></li>
+                  <% end %>
+                </ul>
+              </p>
+
+
+
+            <% end %>
             <% if @declared_program %>
               <%= link_to "View AOC", major_path(@declared_program), class: 'card-link' %>
             <% else %>
@@ -77,6 +90,18 @@
               <%= link_to "Declare AOC", new_declared_program_path, class: 'card-link' %>
             <% end %>
             <%= link_to "All declared AOCs", declared_programs_url, class: 'card-link' %>
+          </div>
+        </div>
+      </div>
+      <!-- Completed Courses -->
+      <div class="col col-lg-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Completed Courses</h5>
+            <p class="card-text">
+              See all courses students have completed
+            </p>
+            <%= link_to "See Progress", completed_courses_path(user: current_user), class: "card-link" %>
           </div>
         </div>
       </div>
