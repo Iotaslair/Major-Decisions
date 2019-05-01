@@ -1,6 +1,6 @@
 <% content_for :hero_head do %>
 <%= notice %>
-  <h1>Confirmation</h1>
+  <h1><%= @completed_course.course.title %></h1>
 <% end %>
 
 <% content_for :hero_lead do %>
@@ -9,15 +9,6 @@
 
 <% content_for :content do %>
 <p>
-  <strong>User:</strong>
-  <%= @completed_course.user.email %>
+  You (<%= @completed_course.user.email %>) marked the course <strong>'<%= @completed_course.course.title %>'</strong> complete on <strong><%= @completed_course.created_at.month %>.<%= @completed_course.created_at.day %></strong>
 </p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @completed_course.course.title %>
-</p>
-
-<%= link_to 'Edit', edit_completed_course_path(@completed_course) %> |
-<%= link_to 'Back', completed_courses_path %>
 <% end %>
