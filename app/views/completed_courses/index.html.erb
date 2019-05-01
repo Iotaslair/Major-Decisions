@@ -11,6 +11,7 @@
 <% content_for :hero_button_group do %>
   <%= link_to 'Add Completed Course', new_completed_course_path, class: 'btn btn-outline-primary' %>
   <% if current_user.declared_programs.first %>
+    <%= link_to "Your AOC", major_path(current_user.declared_programs.first.major_id), class: 'btn btn-outline-primary' %>
     <%= link_to "Change AOC", edit_declared_program_path(current_user.declared_programs.first), class: 'btn btn-outline-danger' %>
   <% else %>
     <%= link_to "Declare AOC", new_declared_program_path, class: 'btn btn-outline-secondary' %>
