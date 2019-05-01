@@ -17,7 +17,8 @@ Rails version: `5.2.3`
 - [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
 - [x] Don't allow students to say they took a course twice
 - [x] Fixed links in footer and navbar
-- [x] Make all html pages use hero layout and bootstrap (We got most done) 
+- [x] Make all html pages use hero layout and bootstrap (We got most done)
+- [ ] Optimize the website to reduce clicks
 
 
 ## Developing locally
