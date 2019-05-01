@@ -9,7 +9,8 @@ class CompletedCoursesController < ApplicationController
   # GET /completed_courses.json
   def index
     if current_user.faculty?
-      @completed_courses = CompletedCourse.all
+      # Return all completed_courses ordered by :course_id
+      @completed_courses = CompletedCourse.all.order(:course_id)
     else
       @completed_courses = CompletedCourse.where(user_id: current_user)
     end
