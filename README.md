@@ -7,12 +7,11 @@ Rails version: `5.2.3`
 ## Todo
 **Only use this for minor bugs/to-dos/fix-mes. Create an issue and add the 'enhancement' label if it's big/important.**
 
-- [x] Make Requirements page pretty -- Kyle see prettyRequirements branch
+- [x] Make Requirements page pretty
 - [ ] Back buttons are weird in a few different places. 
         Click on one of the majors, then click a course in that major (that's also in another major), click on the other major, click back
         Maybe more places where it fails
-- [ ] Faculty shouldn't be able to add completed courses -- William in progress
-        Remove card in profile view (and lock to students (in controller?)) 
+- [ ] Faculty shouldn't be able to add completed courses
 - [ ] Get rid of dropdown for completed courses as a student (Make like Google's homepage when you search)
 - [x] Search all courses/AOC's offered so you don't have to scroll forever(/courses) --kyle see visualFixes branch
 - [x] Allow students to choose their AOC- [ ] Search all courses offered so you don't have to scroll forever(/courses)
@@ -20,7 +19,7 @@ Rails version: `5.2.3`
 - [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
 - [x] Don't allow students to say they took a course twice
 - [x] Fixed links in footer and navbar
-- [ ] Make all html pages use hero layout and bootstrap --Kyle in progress 
+- [x] Make all html pages use hero layout and bootstrap (We got most done) 
 
 
 ## Developing locally
