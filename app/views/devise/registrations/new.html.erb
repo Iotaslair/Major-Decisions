@@ -21,6 +21,14 @@
     <%= f.label :password_confirmation, class: "sr-only" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
 
+    <hr class="mb-4">
+    <div class="custom-control custom-checkbox">
+      <%= f.label :faculty do %>
+        <%= f.check_box :faculty %>
+        I am a faculty member.
+      <% end %>
+    </div><br/>
+
     <%= f.submit "Create Account", class: "btn btn-lg btn-primary btn-block" %>
     <% end %>
 
