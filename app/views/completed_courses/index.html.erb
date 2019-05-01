@@ -32,6 +32,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <%= link_to course_record.course.title, completed_course_path(course_record) %>
               <span class="badge badge-pill badge-success">Complete</span>
+              <%= link_to 'Remove', completed_courses_url, method: :destroy, data: {confirm: 'Are you sure?'} %>
             </li>
           <% end %>
         </ul>
