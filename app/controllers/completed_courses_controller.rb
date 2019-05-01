@@ -39,11 +39,14 @@ class CompletedCoursesController < ApplicationController
     @completed_course = CompletedCourse.new(completed_course_params)
 
     respond_to do |format|
-      if @completed_course.save
+      if CompletedCourse.where(user_id: current_user, course_id: @completed_course.course_id).size != 0
+        format.html {redirect_to @completed_course, alert: 'Course already completed.'}
+        format.json {render :show, status: :ok, location: @completed_course}
+      elsif @completed_course.save
 
         # Redirect to the user's declared program if one exists
         if current_user.declared_programs.first
-          format.html {redirect_to major_path(current_user.declared_programs.first), notice: 'Course was marked as complete.'}
+          format.html { redirect_to major_path(current_user.declared_programs.first.major_id), notice: 'Course was marked as complete.' }
         else
 
           # Else, go to their completed courses list
