@@ -8,10 +8,8 @@ Rails version: `5.2.3`
 **Only use this for minor bugs/to-dos/fix-mes. Create an issue and add the 'enhancement' label if it's big/important.**
 
 - [x] Make Requirements page pretty
-- [ ] Back buttons are weird in a few different places. 
-        Click on one of the majors, then click a course in that major (that's also in another major), click on the other major, click back
-        Maybe more places where it fails
-- [ ] Faculty shouldn't be able to add completed courses
+- [x] Back buttons are weird in a few different places. (May still be a bit weird)
+- [x] Faculty shouldn't be able to add completed courses (They can now see all courses that students have taken)
 - [ ] Get rid of dropdown for completed courses as a student (Make like Google's homepage when you search)
 - [x] Search all courses/AOC's offered so you don't have to scroll forever(/courses) --kyle see visualFixes branch
 - [x] Allow students to choose their AOC- [ ] Search all courses offered so you don't have to scroll forever(/courses)
