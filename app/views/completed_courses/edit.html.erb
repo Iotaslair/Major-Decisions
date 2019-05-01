@@ -1,6 +1,10 @@
-<h1>Editing Completed Course</h1>
+<% content_for :hero_head do %>
+  <h1>Edit a Completed Course</h1>
+<% end %>
 
-<%= render 'form', completed_course: @completed_course %>
+<% content_for :content do %>
+  <%= render 'form', completed_course: @completed_course %>
 
-<%= link_to 'Show', @completed_course %> |
-<%= link_to 'Back', completed_courses_path %>
+  <%= link_to 'Show', @completed_course %> |
+  <%= link_to 'Back', completed_courses_path %>
+<% end %>
