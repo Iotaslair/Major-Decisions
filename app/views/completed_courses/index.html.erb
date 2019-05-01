@@ -31,6 +31,7 @@
         <table class="table table-hover" id="myTable">
           <thead class="thead-dark">
           <tr>
+            <th class="col-md-1">Student Name</th>
             <th class="col-md-1">Course Title</th>
             <th class="col-md-1">Completed</th>
             <% if !current_user.faculty? %>
@@ -40,6 +41,9 @@
           </thead>
           <% @completed_courses.each do |course_record| %>
             <tr>
+              <% if current_user.faculty? %>
+                <td> <%= course_record.user.firstname + " " + course_record.user.lastname %> </td>
+              <% end %>
               <td><%= link_to course_record.course.title, completed_course_path(course_record) %></td>
               <td><span class="badge badge-pill badge-success">Complete</span></td>
               <% if !current_user.faculty? %>
