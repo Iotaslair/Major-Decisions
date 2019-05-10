@@ -16,7 +16,11 @@
   <% else %>
     <%= link_to "Your Academic Progress", completed_courses_url, class: "btn btn-outline-primary" %>
     <%= link_to "Add Completed Course", new_completed_course_path, class: "btn btn-outline-primary" %>
-    <%= link_to "Change AOC", edit_declared_program_path(current_user.declared_programs.first), class: "btn btn-outline-danger" %>
+    <% if !current_user.faculty? && current_user.declared_programs.empty? %>
+      <!-- display nothing because this student hasn't declared their AOC-->
+    <% else %>
+      <%= link_to "Change AOC", edit_declared_program_path(current_user.declared_programs.first), class: "btn btn-outline-danger" %>
+    <% end %>
     <%= link_to "Back", majors_path, class: "btn btn-outline-secondary btn-large" %>
   <% end %>
 <% end %>
