@@ -4,21 +4,12 @@ Ruby version: `2.6.0`
 
 Rails version: `5.2.3`
 
-## Todo
-**Only use this for minor bugs/to-dos/fix-mes. Create an issue and add the 'enhancement' label if it's big/important.**
+## Story behind Major Decisions
+This is website my team created in my Software Engineering class. It's supposed to a website that students use to track their progress through college.
 
-- [x] Make Requirements page pretty
-- [x] Back buttons are weird in a few different places. (May still be a bit weird)
-- [x] Faculty shouldn't be able to add completed courses (They can now see all courses that students have taken)
-- [ ] Get rid of dropdown for completed courses as a student (Make like Google's homepage when you search)
-- [x] Search all courses/AOC's offered so you don't have to scroll forever(/courses) --kyle see visualFixes branch
-- [x] Allow students to choose their AOC- [ ] Search all courses offered so you don't have to scroll forever(/courses)
-- [x] Put link for AOC not in dropdown menu but in Navbar 
-- [ ] When adding a course to a requirement make it like Google's homepage (Should be able to copy if someone did the stuff above)
-- [x] Don't allow students to say they took a course twice
-- [x] Fixed links in footer and navbar
-- [x] Make all html pages use hero layout and bootstrap (We got most done)
-- [ ] Optimize the website to reduce clicks
+## Link to live site
+https://aqueous-thicket-98706.herokuapp.com/
+It's possible that the website goes down eventually since it's running on Heroku's free plan but as of right now it works. Also it will very likely take 30-ish seconds to connect at first, Heroku's servers are starting up and once the first page loads it should work well. We cannot remove this loading time.
 
 
 ## Developing locally
