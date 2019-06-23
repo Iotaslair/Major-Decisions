@@ -5,7 +5,7 @@ Ruby version: `2.6.0`
 Rails version: `5.2.3`
 
 ## Story behind Major Decisions
-This is website my team created in my Software Engineering class. It's supposed to a website that students use to track their progress through college. Faculty members can create Areas of Concentrations (AOC, aka Major) add courses to their AOCs and allows students to take courses. This project was completed in 2 weeks with a team of 4 people. I made a duplicate of the repo because the original repo is private. 
+This is website my team created in my Software Engineering class. It's supposed to a website that students use to track their progress through college. Faculty members can create Areas of Concentrations (AOC, aka Major) add courses to their AOCs and allows students to take courses. This project was completed in 4 weeks with a team of 4 people. I made a duplicate of the repo because the original repo is private. 
 
 ## Link to live site
 https://aqueous-thicket-98706.herokuapp.com/
