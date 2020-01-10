@@ -8,7 +8,7 @@ Rails version: `5.2.3`
 This is website my team created in my Software Engineering class. It's supposed to a website that students use to track their progress through college. Faculty members can create Areas of Concentrations (AOC, aka Major) add courses to their AOCs and allows students to take courses. This project was completed in 4 weeks with a team of 4 people. I made a duplicate of the repo because the original repo is private. 
 
 ## Link to live site
-https://aqueous-thicket-98706.herokuapp.com/
+https://majordecisions.herokuapp.com/
 It's possible that the website will go down eventually since it's running on Heroku's free plan but as of right now it works. Also, it will very likely take 30-ish seconds to connect at first, Heroku's servers are starting up and once the first page loads it should work well. We cannot remove this loading time without upgrading the plan the website is running on.
 
 
