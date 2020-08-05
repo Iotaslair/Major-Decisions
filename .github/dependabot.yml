@@ -7,3 +7,7 @@ updates:
     # Check the bundler registry for updates every day (weekdays)
     schedule:
       interval: "daily"
+    labels:
+      - "dependencies"
+      # Add default Kodiak `merge.automerge_label`
+      - "automerge"
