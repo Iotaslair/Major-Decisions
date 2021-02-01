@@ -9,7 +9,8 @@ This is website my team created in my Software Engineering class. It's supposed 
 
 ## Link to live site
 https://majordecisions.herokuapp.com/
-It's possible that the website will go down eventually since it's running on Heroku's free plan but as of right now it works. Also, it will very likely take 30-ish seconds to connect at first, Heroku's servers are starting up and once the first page loads it should work well. We cannot remove this loading time without upgrading the plan the website is running on.
+**The website will take 30-ish seconds to connect at first**
+Heroku's servers are starting up and once the first page loads it should work well. It's possible that the website will go down eventually since it's running on Heroku's free plan but as of right now it works.  We cannot remove this loading time without upgrading the plan the website is running on.
 If you'd like to take a look around there is a few test accounts, one of a faculty member and a student
 
 Username: faculty@ncf.edu
