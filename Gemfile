@@ -9,7 +9,7 @@ gem 'rails', '~> 6.1.3'
 # Moved to :test and :development group
 #gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 5.2'
+gem 'puma', '~> 5.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
