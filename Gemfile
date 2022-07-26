@@ -46,7 +46,7 @@ gem 'jquery-rails'
 
 # FontAwesome
 #gem 'font-awesome-rails'
-gem 'font-awesome-sass', '~> 6.1.1'
+gem 'font-awesome-sass', '~> 6.1.2'
 
 # Authentication and authorisation
 gem 'devise'
