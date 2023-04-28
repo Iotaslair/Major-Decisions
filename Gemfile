@@ -77,7 +77,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '~> 1.5.2'
+  gem 'pg', '~> 1.5.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
