@@ -170,7 +170,7 @@ GEM
     pg (1.5.4)
     popper_js (2.11.8)
     public_suffix (5.0.1)
-    puma (6.3.1)
+    puma (6.4.0)
       nio4r (~> 2.0)
     pundit (2.3.1)
       activesupport (>= 3.0.0)
@@ -287,7 +287,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.9)
   minitest-reporters
   pg (~> 1.5.4)
-  puma (~> 6.3)
+  puma (~> 6.4)
   pundit
   rails (~> 7.0.8)
   sass-rails (~> 6.0)
